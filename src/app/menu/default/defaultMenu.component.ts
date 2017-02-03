@@ -5,15 +5,18 @@ import {
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'menu',
+  selector: 'default-menu',
   styleUrls: [
-    './menu.component.css'
+    './defaultMenu.component.css'
   ],
   template: `
-      <router-outlet></router-outlet>
+    <div class="options">
+      <a [routerLink]="['newGame']"><h2>Новая игра</h2></a>
+      <a [routerLink]="main"><h2>Продолжить</h2></a>
+    </div>
   `
 })
-export class MenuComponent implements OnInit {
+export class DefaultMenuComponent implements OnInit {
 
   public localState: any;
   constructor(
