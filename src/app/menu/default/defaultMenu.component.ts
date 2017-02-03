@@ -11,8 +11,8 @@ import { ActivatedRoute } from '@angular/router';
   ],
   template: `
     <div class="options">
-      <a [routerLink]="['newGame']"><h2>Новая игра</h2></a>
-      <a [routerLink]="main"><h2>Продолжить</h2></a>
+      <a [routerLink]="['newGame']"><h3>Новая игра</h3></a>
+      <a [routerLink]="['/main']"><h3>Продолжить</h3></a>
     </div>
   `
 })

@@ -25,6 +25,7 @@ import { AppComponent } from './app.component';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InternalStateType } from './app.service';
 import { MenuComponents } from './menu';
+import { MainComponents } from './main';
 
 import '../styles/styles.scss';
 import '../styles/headings.css';
@@ -48,7 +49,8 @@ type StoreType = {
   bootstrap: [ AppComponent ],
   declarations: [
     AppComponent,
-    MenuComponents
+    MenuComponents,
+    MainComponents
   ],
   imports: [ // import Angular's modules
     BrowserModule,

@@ -4,22 +4,23 @@ import {
 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { AppState } from '../../app.service';
+import { AppState } from '../app.service';
 
 @Component({
-  selector: 'new-game',
+  selector: 'main-game',
   styleUrls: [
-    './newgame.component.css'
+    './main.css'
   ],
-  templateUrl: './newGame.component.html'
+  templateUrl: './main.html'
 })
-export class NewGameComponent implements OnInit {
-
-  public localState: any;
+export class Main implements OnInit {
   constructor(
     public route: ActivatedRoute,
     public appState: AppState
   ) {}
+
+  public localState: any;
+  public username: string = this.appState.state['name'];
 
   public ngOnInit() {
     this.route
@@ -28,10 +29,6 @@ export class NewGameComponent implements OnInit {
         // your resolved data from route
         this.localState = data.yourData;
       });
-  }
-
-  startGame(username) {
-    this.appState.set('name', username);
   }
 
 }

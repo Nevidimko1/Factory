@@ -186,6 +186,23 @@ module.exports = function (options) {
           use: 'file-loader'
         },
 
+        {
+          test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,
+          loader: "url-loader?limit=10000&minetype=application/font-woff"
+        }, {
+          test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/,
+          loader: "url-loader?limit=10000&minetype=application/font-woff"
+        }, {
+          test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
+          loader: "url-loader?limit=10000&minetype=application/octet-stream"
+        }, {
+          test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
+          loader: "file-loader"
+        }, {
+          test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+          loader: "url-loader?limit=10000&minetype=image/svg+xml"
+        }
+
       ],
 
     },
@@ -196,6 +213,12 @@ module.exports = function (options) {
      * See: http://webpack.github.io/docs/configuration.html#plugins
      */
     plugins: [
+      new webpack.ProvidePlugin({
+        jQuery: 'jquery',
+        $: 'jquery',
+        jquery: 'jquery'
+      }),
+
       new AssetsPlugin({
         path: helpers.root('dist'),
         filename: 'webpack-assets.json',

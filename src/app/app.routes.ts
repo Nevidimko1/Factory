@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { MenuComponent, DefaultMenuComponent, NewGameComponent } from './menu';
+import { Main } from './main';
 
 import { DataResolver } from './app.resolver';
 
@@ -11,5 +12,6 @@ export const ROUTES: Routes = [
       { path: '**', redirectTo: '', pathMatch: 'full' },
     ]
   },
+  { path: 'main', component: Main},
   { path: '**', redirectTo: 'menu', pathMatch: 'full' },
 ];

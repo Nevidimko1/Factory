@@ -5,7 +5,7 @@ import {
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'menu',
+  selector: 'game-menu',
   styleUrls: [
     './menu.component.css'
   ],
