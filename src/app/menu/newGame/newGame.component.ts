@@ -2,9 +2,8 @@ import {
   Component,
   OnInit
 } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-
-import { AppState } from '../../app.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { StorageService } from '../../services';
 
 @Component({
   selector: 'new-game',
@@ -18,7 +17,8 @@ export class NewGameComponent implements OnInit {
   public localState: any;
   constructor(
     public route: ActivatedRoute,
-    public appState: AppState
+    public router: Router,
+    public storageService: StorageService
   ) {}
 
   public ngOnInit() {
@@ -31,7 +31,8 @@ export class NewGameComponent implements OnInit {
   }
 
   startGame(username) {
-    this.appState.set('name', username);
+    this.storageService.set('name', username);
+    this.router.navigate(['../../main']);
   }
 
 }

@@ -8,14 +8,14 @@
 </div>
 
 <div class="row options">
-  <form role="form" style="display: block;">
+  <form role="form" (submit)="startGame(username)" style="display: block;">
     <div class="form-group">
       <input type="text" name="username" tabindex="1" class="form-control" [(ngModel)]="username" placeholder="Имя" value="">
     </div>
     <div class="form-group start-button">
       <div class="row">
         <div class="col-xs-12">
-          <button type="button" tabindex="2" [routerLink]="['../../main']" (click)="startGame(username)" class="form-control btn btn-login">Начать</button>
+          <button type="button" tabindex="2" class="form-control btn btn-login">Начать</button>
         </div>
       </div>
     </div>

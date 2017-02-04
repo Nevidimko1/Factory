@@ -24,6 +24,7 @@ import { ROUTES } from './app.routes';
 import { AppComponent } from './app.component';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InternalStateType } from './app.service';
+import { StorageService } from './services';
 import { MenuComponents } from './menu';
 import { MainComponents } from './main';
 
@@ -59,6 +60,7 @@ type StoreType = {
     RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules })
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
+    StorageService,
     ENV_PROVIDERS,
     APP_PROVIDERS
   ]
@@ -67,9 +69,12 @@ export class AppModule {
 
   constructor(
     public appRef: ApplicationRef,
-    public appState: AppState
-  ) {}
-
+    public appState: AppState,
+    public storageService: StorageService
+  ) {
+    storageService.init();
+  }
+  
   public hmrOnInit(store: StoreType) {
     if (!store || !store.state)
       return;

@@ -3,8 +3,7 @@ import {
   OnInit
 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-
-import { AppState } from '../app.service';
+import { StorageService } from '../services';
 
 @Component({
   selector: 'main-game',
@@ -16,11 +15,11 @@ import { AppState } from '../app.service';
 export class Main implements OnInit {
   constructor(
     public route: ActivatedRoute,
-    public appState: AppState
+    public storageService: StorageService
   ) {}
 
   public localState: any;
-  public username: string = this.appState.state['name'];
+  public username: string = this.storageService.get('name');
 
   public ngOnInit() {
     this.route

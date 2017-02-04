@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 
-import '../../node_modules/bootstrap/dist/css/bootstrap.css';
+import 'bootstrap';
 
 @Injectable()
 export class DataResolver implements Resolve<any> {
