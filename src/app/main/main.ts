@@ -2,7 +2,7 @@ import {
   Component,
   OnInit
 } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { StorageService } from '../services';
 
 @Component({
@@ -15,8 +15,12 @@ import { StorageService } from '../services';
 export class Main implements OnInit {
   constructor(
     public route: ActivatedRoute,
+    public router: Router,
     public storageService: StorageService
-  ) {}
+  ) {
+    if(!this.storageService.initialized)
+      router.navigate(['menu']);
+  }
 
   public localState: any;
   public username: string = this.storageService.get('name');

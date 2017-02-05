@@ -2,7 +2,8 @@ import {
   Component,
   OnInit
 } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { StorageService } from '../../services';
 
 @Component({
   selector: 'default-menu',
@@ -11,17 +12,22 @@ import { ActivatedRoute } from '@angular/router';
   ],
   template: `
     <div class="options">
+      <a (click)="loadGame()" [hidden]="!saveGameExists"><h3>Продолжить</h3></a>
       <a [routerLink]="['newGame']"><h3>Новая игра</h3></a>
-      <a [routerLink]="['/main']"><h3>Продолжить</h3></a>
     </div>
   `
 })
 export class DefaultMenuComponent implements OnInit {
 
   public localState: any;
+  public saveGameExists = false;
   constructor(
-    public route: ActivatedRoute
-  ) {}
+    public route: ActivatedRoute,
+    public router: Router,
+    public storageService: StorageService
+  ) {
+    this.saveGameExists = this.storageService.saveGame;
+  }
 
   public ngOnInit() {
     this.route
@@ -32,6 +38,13 @@ export class DefaultMenuComponent implements OnInit {
       });
 
     console.log('hello `Menu` component');
+  }
+
+  public loadGame():void {
+    this.storageService.load();
+    if(this.storageService.initialized) {
+      this.router.navigate(['/main']);
+    }
   }
 
 }

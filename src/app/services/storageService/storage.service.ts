@@ -3,14 +3,40 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class StorageService {
   private _store = {};
+  private _initialized = false;
+  private _saveGame = null;
 
-  public init() {
+  constructor() {
+    let stringified = localStorage.getItem('playerData');
     try {
-      this._store = JSON.parse(localStorage.getItem('playerData'));
+      let obj = JSON.parse(stringified);
+      if(obj && typeof obj === 'object') {
+        this._saveGame = obj;
+      }
     }
     catch(e) {
       console.error('Cannot parse data from LocalStorage');
     }
+  }
+
+  public load() {
+    if(this._saveGame) {
+      this._store = this._saveGame;
+      this._initialized = true;
+    }
+  }
+
+  public createGame(username) {
+    this.set('name', username);
+    this._initialized = true;
+  }
+
+  public get saveGame() {
+    return this._saveGame;
+  }
+
+  public get initialized() {
+    return this._initialized;
   }
 
   public get store() {

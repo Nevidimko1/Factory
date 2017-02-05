@@ -31,7 +31,7 @@ export class NewGameComponent implements OnInit {
   }
 
   startGame(username) {
-    this.storageService.set('name', username);
+    this.storageService.createGame(username);
     this.router.navigate(['../../main']);
   }
 

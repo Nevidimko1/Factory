@@ -12,7 +12,7 @@ import {
 } from '@angularclass/hmr';
 import {
   RouterModule,
-  PreloadAllModules
+  PreloadAllModules,
 } from '@angular/router';
 
 /*
@@ -70,11 +70,8 @@ export class AppModule {
 
   constructor(
     public appRef: ApplicationRef,
-    public appState: AppState,
-    public storageService: StorageService
-  ) {
-    storageService.init();
-  }
+    public appState: AppState
+  ) { }
   
   public hmrOnInit(store: StoreType) {
     if (!store || !store.state)

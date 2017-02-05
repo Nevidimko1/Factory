@@ -6,7 +6,9 @@ import {
   OnInit,
   ViewEncapsulation
 } from '@angular/core';
+import { Router } from '@angular/router';
 import { AppState } from './app.service';
+import { StorageService } from './services';
 
 /*
  * App Component
@@ -25,13 +27,14 @@ import { AppState } from './app.service';
   `
 })
 export class AppComponent implements OnInit {
-  public angularclassLogo = 'assets/img/angularclass-avatar.png';
-  public name = 'Factory';
-  public url = 'https://twitter.com/AngularClass';
 
   constructor(
-    public appState: AppState
-  ) {}
+    public appState: AppState,
+    public router: Router,
+    public storageService: StorageService
+  ) {
+    //router.navigateByUrl('menu');
+  }
 
   public ngOnInit() {
     console.log('Initial App State', this.appState.state);
