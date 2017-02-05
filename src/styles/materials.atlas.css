@@ -1,0 +1,1182 @@
+.res {
+  background-image: url('../assets/img/materials.png');
+  background-repeat: no-repeat;
+  width: 32px;
+  height: 32px;
+}
+
+.res-aircraftengine {
+	background-position: 0 -33px
+}
+
+.res-aircraftinterior {
+	background-position: -99px -396px
+}
+
+.res-airplan {
+	background-position: -33px 0
+}
+
+.res-alarm {
+	background-position: -33px -33px
+}
+
+.res-alcohol {
+	background-position: 0 -66px
+}
+
+.res-alcu {
+	background-position: -33px -66px
+}
+
+.res-aluminium {
+	background-position: -66px 0
+}
+
+.res-animalfeed {
+	background-position: -66px -33px
+}
+
+.res-animalfeed2 {
+	background-position: -66px -66px
+}
+
+.res-antifreeze {
+	background-position: 0 -99px
+}
+
+.res-antiseptic {
+	background-position: -33px -99px
+}
+
+.res-antismok {
+	background-position: -66px -99px
+}
+
+.res-arachis {
+	background-position: -99px 0
+}
+
+.res-autoparts {
+	background-position: -99px -33px
+}
+
+.res-avionics {
+	background-position: -99px -66px
+}
+
+.res-b_tea {
+	background-position: -99px -99px
+}
+
+.res-babycarr {
+	background-position: 0 -132px
+}
+
+.res-babycarseat {
+	background-position: -33px -132px
+}
+
+.res-babyfood {
+	background-position: -66px -132px
+}
+
+.res-babymonitor {
+	background-position: -99px -132px
+}
+
+.res-battery {
+	background-position: -132px 0
+}
+
+.res-bauxite {
+	background-position: -132px -33px
+}
+
+.res-bee {
+	background-position: -132px -66px
+}
+
+.res-beer {
+	background-position: -132px -99px
+}
+
+.res-bicycle {
+	background-position: -132px -132px
+}
+
+.res-bigwatches {
+	background-position: 0 -165px
+}
+
+.res-bijouterie {
+	background-position: -33px -165px
+}
+
+.res-boiler {
+	background-position: -66px -165px
+}
+
+.res-book {
+	background-position: -99px -165px
+}
+
+.res-boots {
+	background-position: -132px -165px
+}
+
+.res-bourbon {
+	background-position: -165px 0
+}
+
+.res-bread {
+	background-position: -165px -33px
+}
+
+.res-brilliant {
+	background-position: -165px -66px
+}
+
+.res-bronzedec {
+	background-position: -165px -99px
+}
+
+.res-butter {
+	background-position: -165px -132px
+}
+
+.res-cacao {
+	background-position: -165px -165px
+}
+
+.res-camera {
+	background-position: 0 -198px
+}
+
+.res-can {
+	background-position: -33px -198px
+}
+
+.res-cannedcorn {
+	background-position: -66px -198px
+}
+
+.res-cannedolives {
+	background-position: -99px -198px
+}
+
+.res-cap {
+	background-position: -132px -198px
+}
+
+.res-car {
+	background-position: -165px -198px
+}
+
+.res-car_doors {
+	background-position: -198px 0
+}
+
+.res-car_sedan {
+	background-position: -198px -33px
+}
+
+.res-car_sport {
+	background-position: -198px -66px
+}
+
+.res-car_suv {
+	background-position: -198px -99px
+}
+
+.res-carbon {
+	background-position: -198px -132px
+}
+
+.res-carpet {
+	background-position: -198px -165px
+}
+
+.res-caviar {
+	background-position: -198px -198px
+}
+
+.res-cellularphone {
+	background-position: 0 -231px
+}
+
+.res-ceramic {
+	background-position: -33px -231px
+}
+
+.res-chassis {
+	background-position: -66px -231px
+}
+
+.res-cheese {
+	background-position: -99px -231px
+}
+
+.res-chemicals {
+	background-position: -132px -231px
+}
+
+.res-chicken {
+	background-position: -165px -231px
+}
+
+.res-chocolate {
+	background-position: -198px -231px
+}
+
+.res-cigar {
+	background-position: -231px 0
+}
+
+.res-cigarette {
+	background-position: -231px -33px
+}
+
+.res-clay {
+	background-position: -231px -66px
+}
+
+.res-clothes {
+	background-position: -231px -99px
+}
+
+.res-coal {
+	background-position: -231px -132px
+}
+
+.res-coal_fired {
+	background-position: -231px -165px
+}
+
+.res-coal_mill {
+	background-position: -231px -198px
+}
+
+.res-codfish {
+	background-position: -231px -231px
+}
+
+.res-codliver {
+	background-position: 0 -264px
+}
+
+.res-codliveroil {
+	background-position: -33px -264px
+}
+
+.res-coffee {
+	background-position: -66px -264px
+}
+
+.res-coffeemachine {
+	background-position: -99px -264px
+}
+
+.res-colch {
+	background-position: -132px -264px
+}
+
+.res-comp_accessories {
+	background-position: -165px -264px
+}
+
+.res-components {
+	background-position: -198px -264px
+}
+
+.res-computer {
+	background-position: -231px -264px
+}
+
+.res-condition {
+	background-position: -264px 0
+}
+
+.res-console {
+	background-position: -264px -33px
+}
+
+.res-consumerelectronics {
+	background-position: -264px -66px
+}
+
+.res-cookers {
+	background-position: -264px -99px
+}
+
+.res-cookies {
+	background-position: -264px -132px
+}
+
+.res-corn2 {
+	background-position: -264px -165px
+}
+
+.res-cornflakes {
+	background-position: -264px -198px
+}
+
+.res-cornmeal {
+	background-position: -264px -231px
+}
+
+.res-cosm_masks {
+	background-position: -264px -264px
+}
+
+.res-cosmetics {
+	background-position: 0 -297px
+}
+
+.res-cott_waste {
+	background-position: -33px -297px
+}
+
+.res-cotton {
+	background-position: -66px -297px
+}
+
+.res-cow {
+	background-position: -99px -297px
+}
+
+.res-cr {
+	background-position: -132px -297px
+}
+
+.res-crabs {
+	background-position: -165px -297px
+}
+
+.res-crawlers {
+	background-position: -198px -297px
+}
+
+.res-crib {
+	background-position: -231px -297px
+}
+
+.res-cu {
+	background-position: -264px -297px
+}
+
+.res-dairyproducts {
+	background-position: -297px 0
+}
+
+.res-detergents {
+	background-position: -297px -33px
+}
+
+.res-device {
+	background-position: -297px -66px
+}
+
+.res-diamonds {
+	background-position: -297px -99px
+}
+
+.res-diapers {
+	background-position: -297px -132px
+}
+
+.res-diesel {
+	background-position: -297px -165px
+}
+
+.res-digital_camera {
+	background-position: -297px -198px
+}
+
+.res-digital_video {
+	background-position: -297px -231px
+}
+
+.res-dishes {
+	background-position: -297px -264px
+}
+
+.res-dishwashers {
+	background-position: -297px -297px
+}
+
+.res-dispenser {
+	background-position: 0 -330px
+}
+
+.res-dress {
+	background-position: -33px -330px
+}
+
+.res-drill {
+	background-position: -66px -330px
+}
+
+.res-ecar {
+	background-position: -99px -330px
+}
+
+.res-educationaltoys {
+	background-position: -132px -330px
+}
+
+.res-eggs {
+	background-position: -165px -330px
+}
+
+.res-electroniccomponents {
+	background-position: -198px -330px
+}
+
+.res-elmotor {
+	background-position: -231px -330px
+}
+
+.res-empennage {
+	background-position: -264px -330px
+}
+
+.res-energydrinks {
+	background-position: -297px -330px
+}
+
+.res-engine {
+	background-position: -330px 0
+}
+
+.res-engineoil {
+	background-position: -330px -33px
+}
+
+.res-essence1 {
+	background-position: -330px -66px
+}
+
+.res-essence2 {
+	background-position: -330px -99px
+}
+
+.res-ethanol {
+	background-position: -330px -132px
+}
+
+.res-f_tea {
+	background-position: -330px -165px
+}
+
+.res-fabric {
+	background-position: -330px -198px
+}
+
+.res-fabric2 {
+	background-position: -330px -231px
+}
+
+.res-feedstuff {
+	background-position: -330px -264px
+}
+
+.res-feta {
+	background-position: -330px -297px
+}
+
+.res-fiber {
+	background-position: -330px -330px
+}
+
+.res-fish {
+	background-position: 0 -363px
+}
+
+.res-fishcan {
+	background-position: -33px -363px
+}
+
+.res-fishdeli {
+	background-position: -66px -363px
+}
+
+.res-fishtrawler {
+	background-position: -99px -363px
+}
+
+.res-flour {
+	background-position: -132px -363px
+}
+
+.res-flower {
+	background-position: -165px -363px
+}
+
+.res-football {
+	background-position: -198px -363px
+}
+
+.res-forged {
+	background-position: -231px -363px
+}
+
+.res-fries {
+	background-position: -264px -363px
+}
+
+.res-fruits {
+	background-position: -297px -363px
+}
+
+.res-fuel_equipment {
+	background-position: -330px -363px
+}
+
+.res-furniture {
+	background-position: -363px 0
+}
+
+.res-furniture2 {
+	background-position: -363px -33px
+}
+
+.res-fuselage {
+	background-position: -363px -66px
+}
+
+.res-g_tea {
+	background-position: -363px -99px
+}
+
+.res-gardentools {
+	background-position: -363px -132px
+}
+
+.res-gas_cleaning {
+	background-position: -363px -165px
+}
+
+.res-gaswater {
+	background-position: -363px -198px
+}
+
+.res-gift {
+	background-position: -363px -231px
+}
+
+.res-glass {
+	background-position: -363px -264px
+}
+
+.res-gold {
+	background-position: -363px -297px
+}
+
+.res-gps {
+	background-position: -363px -330px
+}
+
+.res-grain {
+	background-position: -363px -363px
+}
+
+.res-grill {
+	background-position: 0 -396px
+}
+
+.res-hairdressing {
+	background-position: -33px -396px
+}
+
+.res-hairdrier {
+	background-position: -66px -396px
+}
+
+.res-heater {
+	background-position: 0 0
+}
+
+.res-heliostat {
+	background-position: -132px -396px
+}
+
+.res-herbs {
+	background-position: -165px -396px
+}
+
+.res-hygiene {
+	background-position: -198px -396px
+}
+
+.res-hobby {
+	background-position: -231px -396px
+}
+
+.res-honey {
+	background-position: -264px -396px
+}
+
+.res-honeycomb {
+	background-position: -297px -396px
+}
+
+.res-hormonal {
+	background-position: -330px -396px
+}
+
+.res-householdappliances {
+	background-position: -363px -396px
+}
+
+.res-householdchemistry {
+	background-position: -396px 0
+}
+
+.res-icecream {
+	background-position: -396px -33px
+}
+
+.res-ilmenite {
+	background-position: -396px -66px
+}
+
+.res-incinerator {
+	background-position: -396px -99px
+}
+
+.res-instant {
+	background-position: -396px -132px
+}
+
+.res-instantcoffee {
+	background-position: -396px -165px
+}
+
+.res-ipad {
+	background-position: -396px -198px
+}
+
+.res-iron {
+	background-position: -396px -231px
+}
+
+.res-ironore {
+	background-position: -396px -264px
+}
+
+.res-it_equipment {
+	background-position: -396px -297px
+}
+
+.res-yacht {
+	background-position: -396px -330px
+}
+
+.res-yacht_equipment {
+	background-position: -396px -363px
+}
+
+.res-yacht_interior {
+	background-position: -396px -396px
+}
+
+.res-jam {
+	background-position: 0 -429px
+}
+
+.res-jeans {
+	background-position: -33px -429px
+}
+
+.res-jewellery {
+	background-position: -66px -429px
+}
+
+.res-juice {
+	background-position: -99px -429px
+}
+
+.res-kindergarten {
+	background-position: -132px -429px
+}
+
+.res-kitchen {
+	background-position: -165px -429px
+}
+
+.res-knit {
+	background-position: -198px -429px
+}
+
+.res-laptop {
+	background-position: -231px -429px
+}
+
+.res-leather {
+	background-position: -264px -429px
+}
+
+.res-led {
+	background-position: -297px -429px
+}
+
+.res-ledlamp {
+	background-position: -330px -429px
+}
+
+.res-ledtv {
+	background-position: -363px -429px
+}
+
+.res-li_battery {
+	background-position: -396px -429px
+}
+
+.res-liqueur {
+	background-position: -429px 0
+}
+
+.res-lithium {
+	background-position: -429px -33px
+}
+
+.res-machine {
+	background-position: -429px -66px
+}
+
+.res-masut {
+	background-position: -429px -99px
+}
+
+.res-masut_fired {
+	background-position: -429px -132px
+}
+
+.res-matrix {
+	background-position: -429px -165px
+}
+
+.res-meat {
+	background-position: -429px -198px
+}
+
+.res-medical_equipment {
+	background-position: -429px -231px
+}
+
+.res-microprocessor {
+	background-position: -429px -264px
+}
+
+.res-milk {
+	background-position: -429px -297px
+}
+
+.res-minerals {
+	background-position: -429px -330px
+}
+
+.res-mirror {
+	background-position: -429px -363px
+}
+
+.res-mirror0 {
+	background-position: -429px -396px
+}
+
+.res-mixture {
+	background-position: -429px -429px
+}
+
+.res-mn {
+	background-position: 0 -462px
+}
+
+.res-motorcycle {
+	background-position: -33px -462px
+}
+
+.res-napery {
+	background-position: -66px -462px
+}
+
+.res-natur_ingredients {
+	background-position: -99px -462px
+}
+
+.res-networking {
+	background-position: -132px -462px
+}
+
+.res-noodles {
+	background-position: -165px -462px
+}
+
+.res-oil {
+	background-position: -198px -462px
+}
+
+.res-oysters {
+	background-position: -231px -462px
+}
+
+.res-olive {
+	background-position: -264px -462px
+}
+
+.res-oliveoil {
+	background-position: -297px -462px
+}
+
+.res-paint {
+	background-position: -330px -462px
+}
+
+.res-pan {
+	background-position: -363px -462px
+}
+
+.res-paper {
+	background-position: -396px -462px
+}
+
+.res-pearljewelry {
+	background-position: -429px -462px
+}
+
+.res-pearls {
+	background-position: -462px 0
+}
+
+.res-perfumery {
+	background-position: -462px -33px
+}
+
+.res-petrol_normal {
+	background-position: -462px -66px
+}
+
+.res-petrol_premium {
+	background-position: -462px -99px
+}
+
+.res-petrol_regular {
+	background-position: -462px -132px
+}
+
+.res-pig {
+	background-position: -462px -165px
+}
+
+.res-plastics {
+	background-position: -462px -198px
+}
+
+.res-polymetallic {
+	background-position: -462px -231px
+}
+
+.res-poncho {
+	background-position: -462px -264px
+}
+
+.res-potato {
+	background-position: -462px -297px
+}
+
+.res-press {
+	background-position: -462px -330px
+}
+
+.res-printer {
+	background-position: -462px -363px
+}
+
+.res-puer_tea {
+	background-position: -462px -396px
+}
+
+.res-pulsimeter {
+	background-position: -462px -429px
+}
+
+.res-pwtools {
+	background-position: -462px -462px
+}
+
+.res-readinglamp {
+	background-position: 0 -495px
+}
+
+.res-redcaviar {
+	background-position: -33px -495px
+}
+
+.res-refueling {
+	background-position: -66px -495px
+}
+
+.res-repairing {
+	background-position: -99px -495px
+}
+
+.res-restaurant {
+	background-position: -132px -495px
+}
+
+.res-rice {
+	background-position: -165px -495px
+}
+
+.res-rims {
+	background-position: -198px -495px
+}
+
+.res-rjelly {
+	background-position: -231px -495px
+}
+
+.res-roastedcoffee {
+	background-position: -264px -495px
+}
+
+.res-roof_rack {
+	background-position: -297px -495px
+}
+
+.res-rubber {
+	background-position: -330px -495px
+}
+
+.res-salmon {
+	background-position: -363px -495px
+}
+
+.res-sanitaryware {
+	background-position: -396px -495px
+}
+
+.res-sauce {
+	background-position: -429px -495px
+}
+
+.res-sausages {
+	background-position: -462px -495px
+}
+
+.res-saw {
+	background-position: -495px 0
+}
+
+.res-scooter {
+	background-position: -495px -33px
+}
+
+.res-screenwash {
+	background-position: -495px -66px
+}
+
+.res-seine {
+	background-position: -495px -99px
+}
+
+.res-server {
+	background-position: -495px -132px
+}
+
+.res-shagreen {
+	background-position: -495px -165px
+}
+
+.res-sheep {
+	background-position: -495px -198px
+}
+
+.res-ship_body {
+	background-position: -495px -231px
+}
+
+.res-shoes {
+	background-position: -495px -264px
+}
+
+.res-showercubicle {
+	background-position: -495px -297px
+}
+
+.res-silicon {
+	background-position: -495px -330px
+}
+
+.res-silk {
+	background-position: -495px -363px
+}
+
+.res-synth_ingredients {
+	background-position: -495px -396px
+}
+
+.res-syntheticfabric {
+	background-position: -495px -429px
+}
+
+.res-smartphone {
+	background-position: -495px -462px
+}
+
+.res-socks {
+	background-position: -495px -495px
+}
+
+.res-soybean {
+	background-position: 0 -528px
+}
+
+.res-sombrero {
+	background-position: -33px -528px
+}
+
+.res-spice {
+	background-position: -66px -528px
+}
+
+.res-sportfood {
+	background-position: -99px -528px
+}
+
+.res-stationery {
+	background-position: -132px -528px
+}
+
+.res-steel {
+	background-position: -165px -528px
+}
+
+.res-sturgeon {
+	background-position: -198px -528px
+}
+
+.res-sugar {
+	background-position: -231px -528px
+}
+
+.res-suit {
+	background-position: -264px -528px
+}
+
+.res-sun_fired {
+	background-position: -297px -528px
+}
+
+.res-sweet {
+	background-position: -330px -528px
+}
+
+.res-tablets {
+	background-position: -363px -528px
+}
+
+.res-tea {
+	background-position: -396px -528px
+}
+
+.res-teapot {
+	background-position: -429px -528px
+}
+
+.res-teapot_sou {
+	background-position: -462px -528px
+}
+
+.res-termo {
+	background-position: -495px -528px
+}
+
+.res-thermometer {
+	background-position: -528px 0
+}
+
+.res-ti {
+	background-position: -528px -33px
+}
+
+.res-tyre {
+	background-position: -528px -66px
+}
+
+.res-tobacco {
+	background-position: -528px -99px
+}
+
+.res-toys {
+	background-position: -528px -132px
+}
+
+.res-towel {
+	background-position: -528px -165px
+}
+
+.res-tractor {
+	background-position: -528px -198px
+}
+
+.res-trainer {
+	background-position: -528px -231px
+}
+
+.res-trash_equipment {
+	background-position: -528px -264px
+}
+
+.res-turbine {
+	background-position: -528px -297px
+}
+
+.res-tv {
+	background-position: -528px -330px
+}
+
+.res-umbrella {
+	background-position: -528px -363px
+}
+
+.res-underwear {
+	background-position: -528px -396px
+}
+
+.res-usb {
+	background-position: -528px -429px
+}
+
+.res-video {
+	background-position: -528px -462px
+}
+
+.res-washer {
+	background-position: -528px -495px
+}
+
+.res-watches {
+	background-position: -528px -528px
+}
+
+.res-wax {
+	background-position: 0 -561px
+}
+
+.res-wing {
+	background-position: -33px -561px
+}
+
+.res-wood {
+	background-position: -66px -561px
+}
+
+.res-wool {
+	background-position: -99px -561px
+}
+
+.res-zinc {
+	background-position: -132px -561px
+}

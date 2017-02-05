@@ -9,16 +9,22 @@ html, body {
   font-family: monospace !important;
 }
 
-h1, h2, h3, h4, h5, h6, h7 {
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5,  h6, .h6 {
   font-weight: bold;
 }
 
 app {
-  background-color: #232323;
+  display:block;
   bottom: 0px;
   left: 0px;
   position: fixed;
   right: 0px;
   top: 0px;
   z-index: 999999;
+}
+
+main {
+  display: inline-block;
+  height: 100%;
+  width: 100%;
 }

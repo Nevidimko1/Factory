@@ -28,6 +28,7 @@ import { StorageService } from './services';
 import { MenuComponents } from './menu';
 import { MainComponents } from './main';
 
+import '../styles/materials.atlas.css';
 import '../styles/styles.scss';
 import '../styles/headings.css';
 
