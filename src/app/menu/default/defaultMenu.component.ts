@@ -20,13 +20,13 @@ import { StorageService } from '../../services';
 export class DefaultMenuComponent implements OnInit {
 
   public localState: any;
-  public saveGameExists = false;
+  public saveGameExists:boolean = false;
   constructor(
     public route: ActivatedRoute,
     public router: Router,
     public storageService: StorageService
   ) {
-    this.saveGameExists = this.storageService.saveGame;
+    this.saveGameExists = this.storageService.saveGameExists;
   }
 
   public ngOnInit() {

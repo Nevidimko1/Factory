@@ -31,7 +31,7 @@ export class StorageService {
     this._initialized = true;
   }
 
-  public get saveGame() {
+  public get saveGameExists() {
     return this._saveGame;
   }
 
