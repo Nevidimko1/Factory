@@ -1,72 +1,59 @@
-import { Injectable } from '@angular/core';
+import * as _ from 'lodash';
+import * as events from 'events';
+
+import { Injectable, EventEmitter } from '@angular/core';
+import { Storage } from './storage';
 
 @Injectable()
 export class StorageService {
-  private _store = {};
-  private _initialized = false;
-  private _saveGame = null;
+  private _storage: Storage;
+  private _initialized: boolean = false;
+  private _ee;
+  
+  public saveGameExists: boolean = false;
 
   constructor() {
-    let stringified = localStorage.getItem('playerData');
-    try {
-      let obj = JSON.parse(stringified);
-      if(obj && typeof obj === 'object') {
-        this._saveGame = obj;
-      }
-    }
-    catch(e) {
-      console.error('Cannot parse data from LocalStorage');
-    }
+    this._storage = new Storage();
+    this._storage.loadStorage();
+    this._ee = new events.EventEmitter();
+    this._ee.setMaxListeners(0);
+
+    this.saveGameExists = !_.isEmpty(this._storage.get('name'));
   }
 
-  public load() {
-    if(this._saveGame) {
-      this._store = this._saveGame;
+  public loadGame() {
+    if(this.saveGameExists) {
       this._initialized = true;
+      this._ee.emit();
     }
   }
 
   public createGame(username) {
-    this.set('name', username);
+    this._storage.clear();
+    this._storage.set('name', username);
     this._initialized = true;
-  }
-
-  public get saveGameExists() {
-    return this._saveGame;
   }
 
   public get initialized() {
     return this._initialized;
   }
 
-  public get store() {
-    return this._store = this._clone(this._store);
-  }
-
   public listen(key, cb) {
-    console.log('set');
-    let n = 0;
-    setInterval(function() {
-      n++;
-      cb(n.toString());
-    }, 1000);
+    this._ee.on(key, cb);
+    return this._storage.get(key);
   }
 
-  public get(prop?: any) {
-    // use our store getter for the clone
-    const store = this.store;
-    return store.hasOwnProperty(prop) ? store[prop] : null;
+  public unlisten(key, cb) {
+    this._ee.removeListener(key, cb);
   }
 
-  public set(prop: string, value: any) {
-    // internally mutate our store
-    this._store[prop] = value;
-    localStorage.setItem('playerData', JSON.stringify(this._store));
-    return value;
+  public getItem(key: string) {
+    return this._storage.get(key);
   }
 
-  private _clone(object: Object) {
-    // simple object clone
-    return JSON.parse(JSON.stringify( object ));
+  public setItem(key: string, value: any) {
+    this._storage.set(key, value);
+    console.log('EMIT: ', key);
+    this._ee.emit(key, value);
   }
 }

@@ -24,7 +24,6 @@ import { ROUTES } from './app.routes';
 import { AppComponent } from './app.component';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InternalStateType } from './app.service';
-import { WebStorageModule, LocalStorageService } from './services';
 import { StorageService } from './services';
 import { MenuComponents } from './menu';
 import { MainComponents } from './main';
@@ -58,13 +57,11 @@ type StoreType = {
   imports: [ // import Angular's modules
     BrowserModule,
     FormsModule,
-    WebStorageModule,
     HttpModule,
     RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules })
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     StorageService,
-    LocalStorageService,
     ENV_PROVIDERS,
     APP_PROVIDERS
   ]

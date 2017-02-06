@@ -41,7 +41,7 @@ export class DefaultMenuComponent implements OnInit {
   }
 
   public loadGame():void {
-    this.storageService.load();
+    this.storageService.loadGame();
     if(this.storageService.initialized) {
       this.router.navigate(['/main']);
     }
