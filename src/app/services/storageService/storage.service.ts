@@ -42,9 +42,14 @@ export class StorageService {
   public get store() {
     return this._store = this._clone(this._store);
   }
-  // never allow mutation
-  public set store(value) {
-    throw new Error('do not mutate the `.store` directly');
+
+  public listen(key, cb) {
+    console.log('set');
+    let n = 0;
+    setInterval(function() {
+      n++;
+      cb(n.toString());
+    }, 1000);
   }
 
   public get(prop?: any) {
