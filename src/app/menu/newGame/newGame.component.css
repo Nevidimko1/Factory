@@ -20,9 +20,14 @@
 }
 
 .options {
-  margin: 100px auto;
+  margin: 0 auto;
   max-width: 400px;
+  left: 0px;
+  margin-top: -49px;
+  position: absolute;
+  right: 0px;
   text-align: center;
+  top: 50%;
 }
 
 .start-button {

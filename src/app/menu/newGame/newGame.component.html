@@ -1,16 +1,14 @@
-<div class="row">
-  <div class="col-xs-12 menu-head">
-    <a routerLink="" class="back">
-      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-    </a>
-    <h3 class="caption">Новая игра</h3>
-  </div>
+<div class="col-xs-12 menu-head">
+  <a routerLink="" class="back">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+  </a>
+  <h3 class="caption">Новая игра</h3>
 </div>
 
-<div class="row options">
+<div class="options">
   <form role="form" (submit)="startGame(username)" autocomplete="off" style="display: block;">
     <div class="form-group">
-      <input type="text" name="username" tabindex="1" class="form-control" [(ngModel)]="username" placeholder="Имя" value="">
+      <input type="text" name="username" tabindex="1" class="form-control" [(ngModel)]="username" placeholder="Имя" value="" autofocus>
     </div>
     <div class="form-group start-button">
       <div class="row">
