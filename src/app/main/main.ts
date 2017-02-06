@@ -28,10 +28,6 @@ export class Main implements OnInit {
     }
   }
 
-  public incName() {
-    this.storageService.setItem('name', (Number(this.username) + 1).toString());
-  }
-
   //callbacks
   private updateName = (val) => { this.username = val };
 
