@@ -1,31 +1,28 @@
 import {
   Component,
-  OnInit
+  OnInit,
+  Input
 } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { StorageService, DefinesService } from '../services';
+import { ActivatedRoute } from '@angular/router';
+import { StorageService, DefinesService } from '../../../services';
 
 @Component({
-  selector: 'main-game',
+  selector: 'res-item',
   styleUrls: [
-    './main.css'
+    './resourceItem.component.css'
   ],
-  templateUrl: './main.html'
+  templateUrl: './resourceItem.component.html'
 })
-export class Main implements OnInit {
+export class ResourceItem implements OnInit {
 
+  @Input() public info: Object; 
   public username: string;
 
   constructor(
     public route: ActivatedRoute,
-    public router: Router,
     public storageService: StorageService
   ) {
-    if(!this.storageService.initialized) {
-      router.navigate(['menu']);
-    } else {
       this.username = this.storageService.listen('name', this.updateName.bind(this));
-    }
   }
 
   //callbacks

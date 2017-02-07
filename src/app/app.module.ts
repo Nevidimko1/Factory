@@ -24,9 +24,11 @@ import { ROUTES } from './app.routes';
 import { AppComponent } from './app.component';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InternalStateType } from './app.service';
-import { StorageService } from './services';
+import { StorageService, DefinesService } from './services';
 import { MenuComponents } from './menu';
 import { MainComponents } from './main';
+
+import { ResourceItem } from './main/components';
 
 import '../styles/materials.atlas.css';
 import '../styles/styles.scss';
@@ -52,7 +54,8 @@ type StoreType = {
   declarations: [
     AppComponent,
     MenuComponents,
-    MainComponents
+    MainComponents,
+    ResourceItem
   ],
   imports: [ // import Angular's modules
     BrowserModule,
@@ -62,6 +65,7 @@ type StoreType = {
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     StorageService,
+    DefinesService,
     ENV_PROVIDERS,
     APP_PROVIDERS
   ]
