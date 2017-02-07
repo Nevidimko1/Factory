@@ -9,10 +9,6 @@ html, body {
   font-family: monospace !important;
 }
 
-h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5,  h6, .h6 {
-  font-weight: bold;
-}
-
 app {
   display:block;
   bottom: 0px;
@@ -21,6 +17,17 @@ app {
   right: 0px;
   top: 0px;
   z-index: 999999;
+}
+
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5,  h6, .h6 {
+  font-weight: bold;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none !important;
 }
 
 main {

@@ -28,7 +28,7 @@ import { StorageService, DefinesService } from './services';
 import { MenuComponents } from './menu';
 import { MainComponents } from './main';
 
-import { ResourceItem } from './main/components';
+import { ViewComponents } from './main/components';
 
 import '../styles/materials.atlas.css';
 import '../styles/styles.scss';
@@ -55,7 +55,7 @@ type StoreType = {
     AppComponent,
     MenuComponents,
     MainComponents,
-    ResourceItem
+    ViewComponents
   ],
   imports: [ // import Angular's modules
     BrowserModule,

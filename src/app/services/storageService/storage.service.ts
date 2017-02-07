@@ -3,7 +3,6 @@ import * as events from 'events';
 
 import { Injectable, EventEmitter } from '@angular/core';
 import { Storage } from './storage';
-import { DefinesService } from '../defines.service';
 
 @Injectable()
 export class StorageService {
@@ -13,10 +12,8 @@ export class StorageService {
   
   public saveGameExists: boolean = false;
 
-  constructor(
-    private definesService: DefinesService
-  ) {
-    this._storage = new Storage(this.definesService);
+  constructor() {
+    this._storage = new Storage();
     this._storage.loadStorage();
     this._ee = new events.EventEmitter();
     this._ee.setMaxListeners(0);

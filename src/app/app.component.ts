@@ -8,7 +8,6 @@ import {
 } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppState } from './app.service';
-import { StorageService, DefinesService } from './services';
 
 /*
  * App Component
@@ -30,12 +29,8 @@ export class AppComponent implements OnInit {
 
   constructor(
     public appState: AppState,
-    public router: Router,
-    public storageService: StorageService,
-    public definesService: DefinesService
-  ) {
-    //router.navigateByUrl('menu');
-  }
+    public router: Router
+  ) { }
 
   public ngOnInit() {
     console.log('Initial App State', this.appState.state);

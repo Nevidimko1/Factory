@@ -1,0 +1,15 @@
+button {
+  line-height: 0.5;
+  height: 18px;
+  width: 18px;
+  font-size: 16px;
+  padding: 0;
+  font-weight: bold;
+}
+
+.labl {
+  display: inline-block;
+  font-weight: bold;
+  width: 40px;
+  text-align: center;
+}

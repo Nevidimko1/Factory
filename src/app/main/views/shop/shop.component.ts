@@ -19,17 +19,17 @@ import { DefinesService } from '../../../services';
     <div class="col-xs-12 h4">Магазин</div>
     <div class="list">
       <div class="res-list">
-        <res-item *ngFor="let res of definesService.commonResources" [info]="res"></res-item>
+        <res-item *ngFor="let res of materialsList" [info]="res"></res-item>
       </div>
     </div>
   `
 })
 export class ShopComponent implements OnInit {
   constructor(
-    public route: ActivatedRoute,
-    public definesService: DefinesService
+    public route: ActivatedRoute
   ) {}
 
+  private materialsList = DefinesService.commonResources;
   public localState: any;
 
   public ngOnInit() {

@@ -1,4 +1,5 @@
 :host {
+  position: relative;
   display: inline-block;
   height: 70px;
   width: 230px;
@@ -28,4 +29,10 @@
 .labl {
   padding-left: 3px;
   line-height: 1;
+}
+
+ticker {
+  position: absolute;
+  bottom: 10px;
+  right: 3px;
 }

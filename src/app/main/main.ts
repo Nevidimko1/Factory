@@ -3,7 +3,7 @@ import {
   OnInit
 } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { StorageService, DefinesService } from '../services';
+import { StorageService } from '../services';
 
 @Component({
   selector: 'main-game',

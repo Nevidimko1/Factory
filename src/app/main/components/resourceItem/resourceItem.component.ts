@@ -1,17 +1,21 @@
 import {
   Component,
   OnInit,
-  Input
+  Input,
+  Output,
+  EventEmitter
 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { StorageService, DefinesService } from '../../../services';
+import { StorageService } from '../../../services';
+import { ResourceItemService } from './resourceItem.service';
 
 @Component({
   selector: 'res-item',
   styleUrls: [
     './resourceItem.component.css'
   ],
-  templateUrl: './resourceItem.component.html'
+  templateUrl: './resourceItem.component.html',
+  providers: [ResourceItemService]
 })
 export class ResourceItem implements OnInit {
 
@@ -21,13 +25,10 @@ export class ResourceItem implements OnInit {
 
   constructor(
     public route: ActivatedRoute,
-    public storageService: StorageService
+    public storageService: StorageService,
+    private resourceItemService: ResourceItemService
   ) {
   }
-
-  //callbacks
-  private updateName = (val) => { this.username = val };
-  private updateInStorage = (val) => { this.inStorage = val };
 
   public localState: any;
   public ngOnInit() {
@@ -40,6 +41,16 @@ export class ResourceItem implements OnInit {
       
     this.username = this.storageService.listen('name', this.updateName.bind(this));
     this.inStorage = this.storageService.listen('inventory['+this.info.id+']', this.updateInStorage.bind(this));
+  }
+  
+  //callbacks
+  private updateName = (val) => { this.username = val };
+  private updateInStorage = (val) => { this.inStorage = val };
+
+  @Output() tickerChange:Function;
+  public tickerChangeCb(val) {
+    //console.log(this.info.name + ':', val);
+    console.log(val);
   }
 
   public ngOnDestroy() {
