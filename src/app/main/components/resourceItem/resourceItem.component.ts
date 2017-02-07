@@ -15,18 +15,19 @@ import { StorageService, DefinesService } from '../../../services';
 })
 export class ResourceItem implements OnInit {
 
-  @Input() public info: Object; 
-  public username: string;
+  @Input() public info; 
+  public username: String;
+  public inStorage: String;
 
   constructor(
     public route: ActivatedRoute,
     public storageService: StorageService
   ) {
-      this.username = this.storageService.listen('name', this.updateName.bind(this));
   }
 
   //callbacks
   private updateName = (val) => { this.username = val };
+  private updateInStorage = (val) => { this.inStorage = val };
 
   public localState: any;
   public ngOnInit() {
@@ -36,10 +37,14 @@ export class ResourceItem implements OnInit {
         // your resolved data from route
         this.localState = data.yourData;
       });
+      
+    this.username = this.storageService.listen('name', this.updateName.bind(this));
+    this.inStorage = this.storageService.listen('inventory['+this.info.id+']', this.updateInStorage.bind(this));
   }
 
   public ngOnDestroy() {
     this.storageService.unlisten('name', this.updateName);
+    this.storageService.unlisten('inventory['+this.info.id+']', this.updateInStorage);
   }
 
 }

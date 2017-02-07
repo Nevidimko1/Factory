@@ -13,13 +13,14 @@ import { DefinesService } from '../../../services';
       overflow-y: auto;
       height: calc(100% - 40px);
       width: 100%;
-      text-align: center;
     }
   `],
   template: `
     <div class="col-xs-12 h4">Магазин</div>
     <div class="list">
-      <res-item *ngFor="let res of definesService.commonResources" [info]="res"></res-item>
+      <div class="res-list">
+        <res-item *ngFor="let res of definesService.commonResources" [info]="res"></res-item>
+      </div>
     </div>
   `
 })

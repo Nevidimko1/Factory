@@ -1959,41 +1959,41 @@ export const Materials = [
 		"recipe": [],
 		"id": 279
     },
-    // {
-    //     "icon": "chicken",
-    //     "name": "Домашняя птица",
-    //     "group": 7,
-	// 	"recipe": [],
-	// 	"id": 280
-    // },
-    // {
-    //     "icon": "cow",
-    //     "name": "Коровы",
-    //     "group": 7,
-	// 	"recipe": [],
-	// 	"id": 281
-    // },
-    // {
-    //     "icon": "sheep",
-    //     "name": "Овцы",
-    //     "group": 7,
-	// 	"recipe": [],
-	// 	"id": 282
-    // },
-    // {
-    //     "icon": "bee",
-    //     "name": "Пчёлы",
-    //     "group": 7,
-	// 	"recipe": [],
-	// 	"id": 283
-    // },
-    // {
-    //     "icon": "pig",
-    //     "name": "Свиньи",
-    //     "group": 7,
-	// 	"recipe": [],
-	// 	"id": 284
-    // },
+    {
+        "icon": "chicken",
+        "name": "Домашняя птица",
+        "group": 7,
+		"recipe": [],
+		"id": 280
+    },
+    {
+        "icon": "cow",
+        "name": "Коровы",
+        "group": 7,
+		"recipe": [],
+		"id": 281
+    },
+    {
+        "icon": "sheep",
+        "name": "Овцы",
+        "group": 7,
+		"recipe": [],
+		"id": 282
+    },
+    {
+        "icon": "bee",
+        "name": "Пчёлы",
+        "group": 7,
+		"recipe": [],
+		"id": 283
+    },
+    {
+        "icon": "pig",
+        "name": "Свиньи",
+        "group": 7,
+		"recipe": [],
+		"id": 284
+    },
     {
         "icon": "bigwatches",
         "name": "Арт декор",

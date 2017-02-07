@@ -1,12 +1,20 @@
 import * as _ from 'lodash';
+import { DefinesService } from '../';
 
 const PLAYER_DATA = 'playerData';
+
 
 export class Storage {
   private _storage: Object;
 
-  constructor() {
+  constructor(
+    public definesService: DefinesService
+  ) {
     this._storage = {};
+  }
+
+  private EMPTY_STORAGE = {
+    inventory: _.fill(Array(this.definesService.commonResources.length), 0)
   }
 
   public get(key: string): any {
@@ -27,7 +35,7 @@ export class Storage {
   }
 
   public clear(): void {
-    this._storage = {};
+    this._storage = JSON.parse(JSON.stringify(this.EMPTY_STORAGE));
     this.saveStorage();
   }
 
