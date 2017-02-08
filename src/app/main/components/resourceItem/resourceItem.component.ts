@@ -22,6 +22,8 @@ export class ResourceItem implements OnInit {
   public username: String;
   public inStorage: String;
 
+  private minTickerValue: number = 0;
+
   constructor(
     public storageService: StorageService,
     private resourceItemService: ResourceItemService
