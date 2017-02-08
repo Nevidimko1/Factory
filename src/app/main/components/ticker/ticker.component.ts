@@ -1,6 +1,8 @@
+'use strict';
 import {
   Component,
-  Input
+  Output,
+  EventEmitter
 } from '@angular/core';
 
 @Component({
@@ -12,18 +14,17 @@ import {
 })
 export class Ticker {
 
-  @Input() public tickerChange:Function;
+  @Output() public tickerChange:EventEmitter<number> = new EventEmitter<number>();
 
   private value: number = 0;
 
   private dec() {
     this.value--;
-    this.tickerChange(this.value);
+    this.tickerChange.emit(this.value);
   }
   private inc() {
     this.value++;
-    console.log('INC');
-    this.tickerChange(this.value);
+    this.tickerChange.emit(this.value);
   }
   private stop() {
 

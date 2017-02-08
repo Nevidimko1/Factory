@@ -5,7 +5,6 @@ import {
   Output,
   EventEmitter
 } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { StorageService } from '../../../services';
 import { ResourceItemService } from './resourceItem.service';
 
@@ -24,21 +23,13 @@ export class ResourceItem implements OnInit {
   public inStorage: String;
 
   constructor(
-    public route: ActivatedRoute,
     public storageService: StorageService,
     private resourceItemService: ResourceItemService
   ) {
   }
 
   public localState: any;
-  public ngOnInit() {
-    this.route
-      .data
-      .subscribe((data: any) => {
-        // your resolved data from route
-        this.localState = data.yourData;
-      });
-      
+  public ngOnInit() {      
     this.username = this.storageService.listen('name', this.updateName.bind(this));
     this.inStorage = this.storageService.listen('inventory['+this.info.id+']', this.updateInStorage.bind(this));
   }
@@ -47,10 +38,8 @@ export class ResourceItem implements OnInit {
   private updateName = (val) => { this.username = val };
   private updateInStorage = (val) => { this.inStorage = val };
 
-  @Output() tickerChange:Function;
-  public tickerChangeCb(val) {
-    //console.log(this.info.name + ':', val);
-    console.log(val);
+  public tickerChange(val) {
+    console.log(this.info.name + ':', val);
   }
 
   public ngOnDestroy() {
