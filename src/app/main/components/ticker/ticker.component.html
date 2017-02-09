@@ -1,3 +1,5 @@
-<button class="btn btn-xs default" (mousedown)="hold(false)" (mouseout)="stop()" (mouseup)="stop()">-</button>
-<div class="labl">{{value}}</div>
-<button class="btn btn-xs default" (mousedown)="hold(true)" (mouseout)="stop()" (mouseup)="stop()">+</button>
+<div #mouseDown #mouseUp #mouseOut>
+  <button class="btn btn-xs default">-</button>
+  <div class="labl">{{value}}</div>
+  <button class="btn btn-xs default">+</button>
+</div>
