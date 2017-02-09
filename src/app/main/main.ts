@@ -2,7 +2,7 @@ import {
   Component,
   OnInit
 } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { StorageService } from '../services';
 
 @Component({
@@ -17,7 +17,6 @@ export class Main implements OnInit {
   public username: string;
 
   constructor(
-    public route: ActivatedRoute,
     public router: Router,
     public storageService: StorageService
   ) {
@@ -31,15 +30,7 @@ export class Main implements OnInit {
   //callbacks
   private updateName = (val) => { this.username = val };
 
-  public localState: any;
-  public ngOnInit() {
-    this.route
-      .data
-      .subscribe((data: any) => {
-        // your resolved data from route
-        this.localState = data.yourData;
-      });
-  }
+  public ngOnInit() {}
 
   public ngOnDestroy() {
     this.storageService.unlisten('name', this.updateName);

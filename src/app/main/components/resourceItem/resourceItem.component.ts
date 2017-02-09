@@ -3,7 +3,7 @@ import {
   OnInit,
   Input,
   Output,
-  EventEmitter
+  NgZone
 } from '@angular/core';
 import { StorageService } from '../../../services';
 import { ResourceItemService } from './resourceItem.service';
@@ -27,8 +27,7 @@ export class ResourceItem implements OnInit {
   constructor(
     public storageService: StorageService,
     private resourceItemService: ResourceItemService
-  ) {
-  }
+  ) {}
 
   public localState: any;
   public ngOnInit() {      

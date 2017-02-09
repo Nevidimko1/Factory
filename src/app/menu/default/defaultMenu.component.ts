@@ -2,7 +2,7 @@ import {
   Component,
   OnInit
 } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { StorageService } from '../../services';
 
 @Component({
@@ -17,27 +17,15 @@ import { StorageService } from '../../services';
     </div>
   `
 })
-export class DefaultMenuComponent implements OnInit {
+export class DefaultMenuComponent{
 
   public localState: any;
   public saveGameExists:boolean = false;
   constructor(
-    public route: ActivatedRoute,
     public router: Router,
     public storageService: StorageService
   ) {
     this.saveGameExists = this.storageService.saveGameExists;
-  }
-
-  public ngOnInit() {
-    this.route
-      .data
-      .subscribe((data: any) => {
-        // your resolved data from route
-        this.localState = data.yourData;
-      });
-
-    console.log('hello `Menu` component');
   }
 
   public loadGame():void {

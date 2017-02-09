@@ -1,8 +1,8 @@
 import {
   Component,
-  OnInit
+  OnInit,
+  NgZone
 } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { DefinesService } from '../../../services';
 
 @Component({
@@ -24,21 +24,15 @@ import { DefinesService } from '../../../services';
     </div>
   `
 })
-export class ShopComponent implements OnInit {
+export class ShopComponent{
   constructor(
-    public route: ActivatedRoute
-  ) {}
+    private zone: NgZone
+  ) {
+    this.zone.run(() => {
+      console.log('resource zone');
+    });
+  }
 
   private materialsList = DefinesService.commonResources;
-  public localState: any;
-
-  public ngOnInit() {
-    this.route
-      .data
-      .subscribe((data: any) => {
-        // your resolved data from route
-        this.localState = data.yourData;
-      });
-  }
 
 }

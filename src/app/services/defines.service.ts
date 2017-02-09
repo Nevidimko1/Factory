@@ -6,6 +6,6 @@ import { Materials } from '../defines';
 @Injectable()
 export class DefinesService {
 
-  static commonResources = _.filter(Materials, {level: 1});
+  static commonResources = Materials;//_.filter(Materials, {level: 1});
 
 }

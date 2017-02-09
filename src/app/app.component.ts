@@ -3,11 +3,9 @@
  */
 import {
   Component,
-  OnInit,
   ViewEncapsulation
 } from '@angular/core';
 import { Router } from '@angular/router';
-import { AppState } from './app.service';
 
 /*
  * App Component
@@ -25,15 +23,10 @@ import { AppState } from './app.service';
     </main>
   `
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
 
   constructor(
-    public appState: AppState,
     public router: Router
   ) { }
-
-  public ngOnInit() {
-    console.log('Initial App State', this.appState.state);
-  }
 
 }
