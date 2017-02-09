@@ -3,7 +3,7 @@ import {
   OnInit,
   NgZone
 } from '@angular/core';
-import { DefinesService } from '../../../services';
+import { StorageService, DefinesService } from '../../../services';
 
 @Component({
   selector: 'shop',
@@ -24,15 +24,23 @@ import { DefinesService } from '../../../services';
     </div>
   `
 })
-export class ShopComponent{
+export class ShopComponent implements OnInit {
+  
+  private materialsList;
+
   constructor(
+    private storageService: StorageService,
     private zone: NgZone
   ) {
     this.zone.run(() => {
-      console.log('resource zone');
+      console.log('shop zone');
     });
   }
 
-  private materialsList = DefinesService.commonResources;
+  public ngOnInit() {
+    if(this.storageService.initialized)
+      this.materialsList = DefinesService.commonResources;
+  }
+
 
 }

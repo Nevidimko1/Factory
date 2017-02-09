@@ -29,5 +29,5 @@ export const ROUTES: Routes = [
       { path: '**', redirectTo: 'shop', pathMatch: 'full' },
     ]
   },
-  { path: '**', redirectTo: 'menu', pathMatch: 'full' },
+  { path: '**', redirectTo: 'menu', pathMatch: 'full' }
 ];
