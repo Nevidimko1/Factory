@@ -39,7 +39,7 @@ export class ResourceItem implements OnInit {
   private updateInStorage = (val) => { this.inStorage = val };
 
   public tickerChange(val) {
-    console.log(this.info.name + ':', val);
+    //console.log(this.info.name + ':', val);
   }
 
   public ngOnDestroy() {

@@ -8,6 +8,7 @@
   margin: 5px;
   font-weight: bold;
   font-size: 13px;
+  line-height: 15px;
 }
 
 .head {
@@ -22,6 +23,7 @@
 
 .name {
   display: inline-block;
+  max-width: 190px;
   margin: 0 auto;
   padding: 3px;
 }

@@ -53,7 +53,7 @@ export class StorageService {
 
   public setItem(key: string, value: any) {
     this._storage.set(key, value);
-    console.log('EMIT: ', key);
+    //console.log('EMIT: ', key);
     this._ee.emit(key, value);
   }
 }

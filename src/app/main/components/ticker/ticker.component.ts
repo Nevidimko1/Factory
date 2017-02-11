@@ -59,9 +59,7 @@ export class Ticker implements OnInit {
       mouseDown
         .filter(this.filterButton)
         .subscribe(e => {
-          this._zone.run(() => {
-            this.hold(e.target.name === 'inc');
-          })
+          this.hold(e.target.name === 'inc');
         });
 
       mouseUp = Observable.fromEvent(this.myButton.nativeElement, 'mouseup');
@@ -85,10 +83,12 @@ export class Ticker implements OnInit {
     if(!inc && (this.value === this.minValue && this.minValue != undefined) || inc && (this.value === this.maxValue && this.maxValue != undefined))
       return this.stop();
 
-    if(inc)
-      this.value++;
-    else
-      this.value--;
+    this._zone.run(() => {
+      if(inc)
+        this.value++;
+      else
+        this.value--;
+    })
 
     this.storageService.setItem('toBuy[' + this.itemId + ']', this.value);
     this.holdTimeout = setTimeout(this.hold.bind(this), 200 / this.pressCycle, inc);

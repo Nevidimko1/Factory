@@ -19,7 +19,7 @@ import { StorageService, DefinesService } from '../../../services';
     <div class="col-xs-12 h4">Магазин</div>
     <div class="list">
       <div class="res-list">
-        <res-item *ngFor="let res of materialsList" [info]="res"></res-item>
+        <res-item *ngFor="let res of materialsList | async" [info]="res"></res-item>
       </div>
     </div>
   `
@@ -28,6 +28,7 @@ export class ShopComponent implements OnInit {
   private materialsList;  
 
   constructor(
+    private definesService: DefinesService,
     private storageService: StorageService
   ) {
 
@@ -35,7 +36,7 @@ export class ShopComponent implements OnInit {
 
   public ngOnInit() {
     if(this.storageService.initialized)
-      this.materialsList = DefinesService.commonResources;
+      this.materialsList = this.definesService.commonResources();
   }
 
 

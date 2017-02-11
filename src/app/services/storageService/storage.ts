@@ -1,10 +1,6 @@
 import * as _ from 'lodash';
-import { DefinesService } from '../defines.service';
 
 const PLAYER_DATA = 'playerData';
-const EMPTY_STORAGE = {
-  inventory: _.fill(Array(DefinesService.commonResources.length), 0)
-}
 
 export class Storage {
   private _storage: Object;
@@ -31,7 +27,7 @@ export class Storage {
   }
 
   public clear(): void {
-    this._storage = JSON.parse(JSON.stringify(EMPTY_STORAGE));
+    this._storage = {};
     this.saveStorage();
   }
 
