@@ -2,8 +2,7 @@ import {
   Component,
   OnInit,
   Input,
-  Output,
-  NgZone
+  Output
 } from '@angular/core';
 import { StorageService } from '../../../services';
 import { ResourceItemService } from './resourceItem.service';
@@ -32,7 +31,7 @@ export class ResourceItem implements OnInit {
   public localState: any;
   public ngOnInit() {      
     this.username = this.storageService.listen('name', this.updateName.bind(this));
-    this.inStorage = this.storageService.listen('inventory['+this.info.id+']', this.updateInStorage.bind(this));
+    this.inStorage = this.storageService.listen('inventory['+this.info.id+']', this.updateInStorage.bind(this)) || 0;
   }
   
   //callbacks

@@ -1,8 +1,8 @@
 import {
   Component,
-  OnInit,
-  NgZone
+  OnInit
 } from '@angular/core';
+
 import { StorageService, DefinesService } from '../../../services';
 
 @Component({
@@ -25,16 +25,12 @@ import { StorageService, DefinesService } from '../../../services';
   `
 })
 export class ShopComponent implements OnInit {
-  
-  private materialsList;
+  private materialsList;  
 
   constructor(
-    private storageService: StorageService,
-    private zone: NgZone
+    private storageService: StorageService
   ) {
-    this.zone.run(() => {
-      console.log('shop zone');
-    });
+
   }
 
   public ngOnInit() {

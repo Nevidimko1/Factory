@@ -12,7 +12,7 @@ import { StorageService } from '../../services';
   ],
   template: `
     <div class="options">
-      <a (click)="loadGame()" [hidden]="!saveGameExists"><h3>Продолжить</h3></a>
+      <a (click)="loadGame()" *ngIf="saveGameExists"><h3>Продолжить</h3></a>
       <a [routerLink]="['newGame']"><h3>Новая игра</h3></a>
     </div>
   `

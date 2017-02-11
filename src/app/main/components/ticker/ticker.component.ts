@@ -2,16 +2,15 @@ import {
   Component,
   OnInit,
   Input,
-  Output,
-  EventEmitter,
-  ViewChild,
-  AfterViewInit
+  ElementRef, 
+  NgZone, 
+  ViewChild
 } from '@angular/core';
-import {Subject} from 'rxjs/Subject';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/observable/fromEvent';
 import 'rxjs/add/operator/filter';
-import 'rxjs/add/operator/merge';
+
+import { StorageService } from '../../../services';
 
 @Component({
   selector: 'ticker',
@@ -20,43 +19,66 @@ import 'rxjs/add/operator/merge';
   ],
   templateUrl: './ticker.component.html'
 })
-export class Ticker implements OnInit{
-  mouseDown$: Observable<MouseEvent>;
-  mouseUp$: Observable<MouseEvent>;
-  mouseOut$: Observable<MouseEvent>;
-
-  @ViewChild('mouseDown') mouseDown: any;
-  @ViewChild('mouseUp') mouseUp: any;
-  @ViewChild('mouseOut') mouseOut: any;
-
+export class Ticker implements OnInit {
+  @Input() public itemId: number;
   @Input() public minValue: number;
   @Input() public maxValue: number;
-  @Output() public tickerChange:EventEmitter<number> = new EventEmitter<number>();
+  
+  @ViewChild('myButton') myButton:ElementRef;
 
-  private value: number = 0;
+  private value: number;
   private holdTimeout;
   private pressCycle: number = 1;
+  private subs:Observable<MouseEvent>[] = [];
 
-  ngOnInit() {}
+  constructor(
+    private _zone:NgZone,
+    private storageService: StorageService
+  ){ 
+    
+  } 
 
-  ngAfterViewInit() :void {
-    const mouseDown = this.mouseDown.nativeElement;
-    this.mouseDown$ = Observable.fromEvent(mouseDown, 'mousedown');
-    this.mouseDown$
-      .filter(e => e.fromElement.parentElement === mouseDown)
-      .subscribe(function() {this.hold(true)}.bind(this));
+  private updateName = (val) => { this.value = val };
 
-    const mouseUp = this.mouseUp.nativeElement;
-    this.mouseUp$ = Observable.fromEvent(mouseUp, 'mouseup');
-    this.mouseUp$
-      .filter(e => e.fromElement.parentElement === mouseUp)
-      .subscribe(this.stop.bind(this));
+  ngOnInit() {
+    this.value = this.storageService.listen('toBuy[' + this.itemId + ']', this.updateName.bind(this)) || 0;
+    this.manuallyBindToViewEvents();
+  }
 
-    const mouseOut = this.mouseOut.nativeElement;
-    this.mouseOut$ = Observable.fromEvent(mouseOut, 'mouseout');
-    this.mouseOut$
-      .filter(e => e.fromElement.parentElement === mouseOut)
-      .subscribe(this.stop.bind(this));
+  private filterButton(e) {
+    var t = e.target as HTMLElement;
+    return t.nodeName === 'BUTTON';
+  }
+
+  manuallyBindToViewEvents() {  let mouseDown: Observable<MouseEvent>;
+    let mouseUp: Observable<MouseEvent>;
+    let mouseOut: Observable<MouseEvent>;
+
+    this._zone.runOutsideAngular(() => {
+      mouseDown = Observable.fromEvent(this.myButton.nativeElement, 'mousedown');
+      mouseDown
+        .filter(this.filterButton)
+        .subscribe(e => {
+          this._zone.run(() => {
+            this.hold(e.target.name === 'inc');
+          })
+        });
+
+      mouseUp = Observable.fromEvent(this.myButton.nativeElement, 'mouseup');
+      mouseUp
+        .filter(this.filterButton)
+        .subscribe(this.stop.bind(this));
+
+      mouseOut = Observable.fromEvent(this.myButton.nativeElement, 'mouseout');
+      mouseOut
+        .filter(this.filterButton)
+        .subscribe(this.stop.bind(this));
+
+    });
+
+    this.subs.push(mouseDown);
+    this.subs.push(mouseUp);
+    this.subs.push(mouseOut);
   }
 
   private hold(inc) {
@@ -68,7 +90,7 @@ export class Ticker implements OnInit{
     else
       this.value--;
 
-    this.tickerChange.emit(this.value);
+    this.storageService.setItem('toBuy[' + this.itemId + ']', this.value);
     this.holdTimeout = setTimeout(this.hold.bind(this), 200 / this.pressCycle, inc);
     if(this.pressCycle < 10)
         this.pressCycle++;
