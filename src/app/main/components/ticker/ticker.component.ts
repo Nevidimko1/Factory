@@ -38,10 +38,15 @@ export class Ticker implements OnInit {
     
   } 
 
-  private updateName = (val) => { this.value = val };
+  private updateValue = (val) => { this.value = val };
+  private clearValue = (arr) => {
+    if(!arr.length)
+      this.value = 0;
+  }
 
   ngOnInit() {
-    this.value = this.storageService.listen('toBuy[' + this.itemId + ']', this.updateName.bind(this)) || 0;
+    this.value = this.storageService.listen('toBuy[' + this.itemId + ']', this.updateValue.bind(this)) || 0;
+    this.storageService.listen('toBuy', this.clearValue.bind(this))
     this.manuallyBindToViewEvents();
   }
 
@@ -103,5 +108,7 @@ export class Ticker implements OnInit {
 
   ngOnDestroy() {
     this.stop();
+    this.storageService.unlisten('toBuy[' + this.itemId + ']', this.updateValue.bind(this));
+    this.storageService.unlisten('toBuy', this.clearValue.bind(this));
   }
 }

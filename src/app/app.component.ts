@@ -6,6 +6,7 @@ import {
   ViewEncapsulation
 } from '@angular/core';
 import { Router } from '@angular/router';
+import { DefinesService } from './services';
 
 /*
  * App Component
@@ -26,7 +27,8 @@ import { Router } from '@angular/router';
 export class AppComponent {
 
   constructor(
-    public router: Router
+    public router: Router,
+    private definesService: DefinesService
   ) { }
 
 }

@@ -4,6 +4,7 @@ import {
 } from '@angular/core';
 import { Router } from '@angular/router';
 import { StorageService } from '../services';
+import { Utils } from '../utils';
 
 @Component({
   selector: 'main-game',
@@ -14,7 +15,8 @@ import { StorageService } from '../services';
 })
 export class Main implements OnInit {
 
-  public username: string;
+  private username: string;
+  private money: string;
 
   constructor(
     public router: Router,
@@ -24,16 +26,19 @@ export class Main implements OnInit {
       router.navigate(['menu']);
     } else {
       this.username = this.storageService.listen('name', this.updateName.bind(this));
+      this.money = Utils.toCurrency(this.storageService.listen('money', this.updateMoney.bind(this)));
     }
   }
 
   //callbacks
-  private updateName = (val) => { this.username = val };
+  private updateName = val => this.username = val;
+  private updateMoney = val => Utils.toCurrency(this.money = val);
 
   public ngOnInit() {}
 
   public ngOnDestroy() {
     this.storageService.unlisten('name', this.updateName);
+    this.storageService.unlisten('money', this.updateMoney);
   }
 
 }

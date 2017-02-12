@@ -52,8 +52,19 @@ export class StorageService {
   }
 
   public setItem(key: string, value: any) {
-    this._storage.set(key, value);
-    //console.log('EMIT: ', key);
+    this._storage.set(key, value);  
+    this.emit(key, value);
+  }
+
+  //privates
+  private emit(key: string, value: any, preventGlobal?: boolean) {
+    //emit item change
     this._ee.emit(key, value);
+    //emit object change
+    if(key.indexOf('[') > -1 && !preventGlobal) {
+      var oKey = key.split('[')[0];
+      var val2 = this.getItem(oKey);
+      this._ee.emit(oKey, val2);
+    }
   }
 }

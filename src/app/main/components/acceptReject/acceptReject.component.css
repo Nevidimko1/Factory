@@ -1,0 +1,18 @@
+:host {
+  width: 300px;
+  background: #bababa;
+  margin: 4px 10px;
+  padding: 4px 10px;
+  height: 30px;
+  font-weight: bold;
+}
+
+.money {
+  display: inline-block;
+  padding-top: 2px;
+  padding-right: 10px;
+}
+
+.btn {
+  font-weight: bold;
+}

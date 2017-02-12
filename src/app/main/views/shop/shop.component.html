@@ -1,0 +1,10 @@
+<div class="container-fluid">
+  <div class="col-xs-4 h4">Магазин</div>
+  <accept-reject class="col-xs-8 pull-right" behavior="buy" acceptName="Купить" rejectName="Отмена"></accept-reject>
+</div>
+
+<div class="list">
+  <div class="res-list">
+    <res-item *ngFor="let res of materialsList | async" [info]="res"></res-item>
+  </div>
+</div>

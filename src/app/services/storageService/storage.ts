@@ -2,6 +2,9 @@ import * as _ from 'lodash';
 
 const PLAYER_DATA = 'playerData';
 
+const DEFAULT_STORAGE: Object = {
+  money: 100
+}
 export class Storage {
   private _storage: Object;
 
@@ -27,7 +30,7 @@ export class Storage {
   }
 
   public clear(): void {
-    this._storage = {};
+    this._storage = {...DEFAULT_STORAGE};
     this.saveStorage();
   }
 

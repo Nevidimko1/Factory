@@ -1,0 +1,10 @@
+.upperPanel {
+  height: 30px;
+}
+
+.list {
+  display: inline-block;
+  overflow-y: auto;
+  height: calc(100% - 40px);
+  width: 100%;
+}

@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { HttpModule, JsonpModule } from '@angular/http';
 import {
   NgModule,
   ApplicationRef
@@ -26,6 +26,7 @@ import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { StorageService, DefinesService } from './services';
 import { MenuComponents } from './menu';
 import { MainComponents } from './main';
+import { UtilsList } from './utils';
 
 import { ViewComponents } from './main/components';
 
@@ -53,11 +54,13 @@ const APP_PROVIDERS = [
     BrowserModule,
     FormsModule,
     HttpModule,
+    JsonpModule,
     RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules })
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     StorageService,
     DefinesService,
+    UtilsList,
     ENV_PROVIDERS,
     APP_PROVIDERS
   ]

@@ -1,0 +1,5 @@
+<div class="pull-right">
+  <button type="button" class="btn btn-primary btn-xs">{{acceptName}}</button>
+  <button type="button" class="btn btn-danger btn-xs" (click)="reject()">{{rejectName}}</button>
+</div>
+<span class="money pull-right" [ngClass]="{'text-success': enough && moreThanZero, 'text-danger': !enough && moreThanZero}">{{money}}€</span>

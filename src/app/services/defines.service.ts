@@ -1,6 +1,6 @@
 import * as _ from 'lodash';
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, Jsonp } from '@angular/http';
 import { Observable, BehaviorSubject } from 'rxjs';
 import 'rxjs/add/operator/map';
 
@@ -14,22 +14,27 @@ export interface Resource {
 
 @Injectable()
 export class DefinesService {
+  private _data;
+
   private _materials;
   private _commonResources;
   private _craftableResources;
 
   constructor(
-    private http: Http
+    private http: Http,
+    private jsonp: Jsonp
   ) {
-    let data = this.http.get('assets/materials.json');
+    this._data = this.http.get('assets/materials.json');
 
-    this._materials = data
-      .map(res => res.json());
+    this._data.subscribe(res => this._materials = res.json());
 
-    this._commonResources = data
-      .map(res => _.filter(res.json(), {level: 1}));
+    this._commonResources = this._data
+      .map(res => {
+        let r = res.json();
+        return _.filter(r, {level: 1});
+      });
 
-    this._craftableResources = data
+    this._craftableResources = this._data
       .map(res => _.filter(res.json(), (r: Resource) => !r.level));
   }
 
@@ -39,6 +44,10 @@ export class DefinesService {
 
   public get craftableResources() {
     return this._craftableResources;
+  }
+
+  public get materialsStatic() {
+    return this._materials || [];
   }
 
 }
