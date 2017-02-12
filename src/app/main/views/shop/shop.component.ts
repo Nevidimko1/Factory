@@ -36,7 +36,7 @@ export class ShopComponent implements OnInit {
 
   public ngOnInit() {
     if(this.storageService.initialized)
-      this.materialsList = this.definesService.commonResources();
+      this.materialsList = this.definesService.commonResources;
   }
 
 
