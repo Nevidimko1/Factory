@@ -3,7 +3,10 @@ import * as _ from 'lodash';
 const PLAYER_DATA = 'playerData';
 
 const DEFAULT_STORAGE: Object = {
-  money: 100
+  money: 100,
+  inventory: [],
+  toBuy: [],
+  toSell: []
 }
 export class Storage {
   private _storage: Object;
