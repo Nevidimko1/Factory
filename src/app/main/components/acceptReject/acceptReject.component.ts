@@ -5,7 +5,6 @@ import {
 } from '@angular/core';
 import { Utils } from '../../../utils';
 import { Store } from '@ngrx/store'
-import { DefinesService } from '../../../services';
 import { Actions } from '../../../services';
 
 @Component({
@@ -22,10 +21,10 @@ export class AcceptReject  implements OnInit{
 
   private money: string;
   private storageMoney: number;
+  private materials: Array<Resource>;
   private list;
   
   constructor(
-    private definesService: DefinesService,
     private store: Store<any>
   ) {
 
@@ -33,10 +32,16 @@ export class AcceptReject  implements OnInit{
 
   public ngOnInit() {
     this.store.select('ToBuyReducer')
-      .subscribe(list => this.updateMoney(list));
+      .subscribe(list => {
+        this.list = list;
+        this.updateMoney();
+      });
 
     this.store.select('MoneyReducer')
       .subscribe((value:number) => this.storageMoney = value);
+      
+    this.store.select('ResourcesReducer')
+      .subscribe((materials: Array<Resource>) => this.materials = materials);
   }
 
   private get enough() {
@@ -59,19 +64,16 @@ export class AcceptReject  implements OnInit{
     this.store.dispatch({type: Actions.TO_BUY.CLEAR_TO_BUY});
   }
 
-  private updateMoney(list) {
-    if(!list)
+  private updateMoney() {
+    if(!this.list || !this.materials) {
+      this.money = Utils.toCurrency(0);
       return;
-      
-    this.list = list;
-    let materials = this.definesService.materialsStatic;
-    if(!materials.length)
-      return;
+    }
 
     let money = 0;
-    list.forEach((n, i) => {
+    this.list.forEach((n, i) => {
       if(n) {
-        money += materials[i].price * n;
+        money += this.materials[i].price * n;
       }
     })
     this.money = Utils.toCurrency(money);

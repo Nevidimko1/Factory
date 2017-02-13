@@ -6,7 +6,6 @@ import {
 } from '@angular/core';
 import { Store } from '@ngrx/store';
 
-import { StorageService } from '../../../services';
 import { ResourceItemService } from './resourceItem.service';
 
 @Component({
@@ -19,30 +18,18 @@ import { ResourceItemService } from './resourceItem.service';
 })
 export class ResourceItem implements OnInit {
 
-  @Input() public info; 
-  public username: String;
+  @Input() public info;
   public itemsInStore: number;
-
   private minTickerValue: number = 0;
 
   constructor(
-    public storageService: StorageService,
     private store: Store<any>,
     private resourceItemService: ResourceItemService
   ) {}
 
   public ngOnInit() {
-    this.username = this.storageService.listen('name', this.updateName.bind(this));
-
     this.store.select('InventoryReducer')
       .subscribe(list => this.itemsInStore = list[this.info.id] || 0);
-  }
-
-  private updateName = name => this.username = name;
-  
-
-  public ngOnDestroy() {
-    this.storageService.unlisten('name', this.updateName);
-  }
+  } 
 
 }

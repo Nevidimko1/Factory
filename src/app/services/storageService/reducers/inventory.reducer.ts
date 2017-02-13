@@ -1,6 +1,7 @@
 export const INVENTORY = {
-    'ADD_ITEMS': 'InventoryReducer_ADD_ITEMS',
-    'SUBSTRACT_ITEMS': 'InventoryReducer_SUBSTRACT_ITEMS'
+    'ADD_ITEMS': 'InventoryReducer.ADD_ITEMS',
+    'SUBSTRACT_ITEMS': 'InventoryReducer.SUBSTRACT_ITEMS',
+    'SET_ITEMS': 'InventoryReducer.SET_ITEMS'
 } ;
 
 export const InventoryReducer = (state = [], action) => {
@@ -20,6 +21,8 @@ export const InventoryReducer = (state = [], action) => {
             newState[action.id] = prevVal ? prevVal - action.number : action.number;
             newState[action.id] = Number(newState[action.id].toFixed(2));
             return newState;
+        case INVENTORY.SET_ITEMS:
+            return [...action.payload];
         default:
             return state;
     }

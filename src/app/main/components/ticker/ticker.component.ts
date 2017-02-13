@@ -99,8 +99,10 @@ export class Ticker implements OnInit {
   }
   
   private stop() {
-    clearTimeout(this.holdTimeout);
-    this.pressCycle = 1;
+    if(this.holdTimeout) {
+      clearTimeout(this.holdTimeout);
+      this.pressCycle = 1;
+    }
   }
 
   ngOnDestroy() {

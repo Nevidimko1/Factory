@@ -2,8 +2,10 @@ import {
   Component,
   OnInit
 } from '@angular/core';
+import { Store } from '@ngrx/store';
+import * as _ from 'lodash';
 
-import { StorageService, DefinesService } from '../../../services';
+import { StorageService } from '../../../services';
 
 @Component({
   selector: 'shop',
@@ -14,15 +16,17 @@ export class ShopComponent implements OnInit {
   private materialsList;  
 
   constructor(
-    private definesService: DefinesService,
-    private storageService: StorageService
+    private storageService: StorageService,
+    private store: Store<any>
   ) {
 
   }
 
   public ngOnInit() {
-    if(this.storageService.initialized)
-      this.materialsList = this.definesService.commonResources;
+    this.store.select('ResourcesReducer')
+      .subscribe((list: Array<Resource>) => {
+        this.materialsList = _.filter(list, o => o.level === 1);
+      });
   }
 
 

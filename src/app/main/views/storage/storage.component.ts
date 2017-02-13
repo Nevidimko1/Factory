@@ -2,8 +2,10 @@ import {
   Component,
   OnInit
 } from '@angular/core';
+import { Store } from '@ngrx/store';
+import * as _ from 'lodash';
 
-import { StorageService, DefinesService } from '../../../services';
+import { StorageService, Actions } from '../../../services';
 
 @Component({
   selector: 'storage',
@@ -19,7 +21,7 @@ import { StorageService, DefinesService } from '../../../services';
     <div class="col-xs-12 h4">Склад</div>
     <div class="list">
       <div class="res-list">
-        <res-item *ngFor="let res of materialsList | async" [info]="res"></res-item>
+        <res-item *ngFor="let res of materialsList" [info]="res"></res-item>
       </div>
     </div>
   `
@@ -28,14 +30,16 @@ export class StorageComponent{
   private materialsList;  
 
   constructor(
-    private definesService: DefinesService,
-    private storageService: StorageService
+    private storageService: StorageService,
+    private store: Store<any>
   ) {
 
   }
 
   public ngOnInit() {
-    if(this.storageService.initialized)
-      this.materialsList = this.definesService.craftableResources;
+    this.store.select('ResourcesReducer')
+      .subscribe((list: Array<Resource>) => {
+        this.materialsList = _.filter(list, o => o.level !== 1);
+      });
   }
 }

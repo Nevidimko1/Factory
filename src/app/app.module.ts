@@ -14,7 +14,7 @@ import {
   RouterModule,
   PreloadAllModules,
 } from '@angular/router';
-import { Store, provideStore } from '@ngrx/store';
+import { Store, StoreModule } from '@ngrx/store';
 
 /*
  * Platform and Environment providers/directives/pipes
@@ -24,7 +24,7 @@ import { ROUTES } from './app.routes';
 // App is our top level component
 import { AppComponent } from './app.component';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
-import { StorageService, DefinesService, Reducers, Actions } from './services';
+import { StorageService, Reducers, Actions } from './services';
 import { MenuComponents } from './menu';
 import { MainComponents } from './main';
 import { UtilsList } from './utils';
@@ -56,12 +56,11 @@ const APP_PROVIDERS = [
     FormsModule,
     HttpModule,
     JsonpModule,
+    StoreModule.provideStore(Reducers),
     RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules })
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     StorageService,
-    DefinesService,
-    provideStore(Reducers),
     UtilsList,
     ENV_PROVIDERS,
     APP_PROVIDERS
@@ -70,9 +69,9 @@ const APP_PROVIDERS = [
 export class AppModule {
 
   constructor(
-    private store: Store<any>
+    private storageService: StorageService
   ) { 
-    this.store.dispatch({type: Actions.MONEY.ADD_MONEY, payload: 100});
+
   }
 
 }

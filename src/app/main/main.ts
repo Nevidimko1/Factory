@@ -26,21 +26,15 @@ export class Main implements OnInit {
   ) {
     if(!this.storageService.initialized) {
       router.navigate(['menu']);
-    } else {
-      this.username = this.storageService.listen('name', this.updateName.bind(this));
-      
-      this.store.select('MoneyReducer')
-        .subscribe(value => this.money = Utils.toCurrency(value));
     }
   }
 
-  //callbacks
-  private updateName = val => this.username = val;
-
-  public ngOnInit() {}
-
-  public ngOnDestroy() {
-    this.storageService.unlisten('name', this.updateName);
+  public ngOnInit() {
+    this.store.select('NameReducer')
+      .subscribe((name: string) => this.username = name);
+      
+    this.store.select('MoneyReducer')
+      .subscribe(value => this.money = Utils.toCurrency(value));
   }
 
 }
