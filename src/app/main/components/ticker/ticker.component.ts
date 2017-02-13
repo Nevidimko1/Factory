@@ -6,11 +6,12 @@ import {
   NgZone, 
   ViewChild
 } from '@angular/core';
+import { Store } from '@ngrx/store'
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/observable/fromEvent';
 import 'rxjs/add/operator/filter';
 
-import { StorageService } from '../../../services';
+import { Actions } from '../../../services';
 
 @Component({
   selector: 'ticker',
@@ -33,20 +34,17 @@ export class Ticker implements OnInit {
 
   constructor(
     private _zone:NgZone,
-    private storageService: StorageService
-  ){ 
-    
+    private store: Store<any>
+  ){
+
   } 
 
-  private updateValue = (val) => { this.value = val };
-  private clearValue = (arr) => {
-    if(!arr.length)
-      this.value = 0;
-  }
-
   ngOnInit() {
-    this.value = this.storageService.listen('toBuy[' + this.itemId + ']', this.updateValue.bind(this)) || 0;
-    this.storageService.listen('toBuy', this.clearValue.bind(this))
+    this.store.select('ToBuyReducer')
+      .subscribe(list => {
+        this.value = list[this.itemId] || 0;
+      });
+
     this.manuallyBindToViewEvents();
   }
 
@@ -90,12 +88,11 @@ export class Ticker implements OnInit {
 
     this._zone.run(() => {
       if(inc)
-        this.value++;
+        this.store.dispatch({type: Actions.TO_BUY.INCREMENT_TO_BUY, payload: this.itemId});
       else
-        this.value--;
-    })
+        this.store.dispatch({type: Actions.TO_BUY.DECREMENT_TO_BUY, payload: this.itemId});
+    });    
 
-    this.storageService.setItem('toBuy[' + this.itemId + ']', this.value);
     this.holdTimeout = setTimeout(this.hold.bind(this), 200 / this.pressCycle, inc);
     if(this.pressCycle < 10)
         this.pressCycle++;
@@ -108,7 +105,5 @@ export class Ticker implements OnInit {
 
   ngOnDestroy() {
     this.stop();
-    this.storageService.unlisten('toBuy[' + this.itemId + ']', this.updateValue.bind(this));
-    this.storageService.unlisten('toBuy', this.clearValue.bind(this));
   }
 }

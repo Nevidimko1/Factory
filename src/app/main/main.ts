@@ -2,6 +2,7 @@ import {
   Component,
   OnInit
 } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { Router } from '@angular/router';
 import { StorageService } from '../services';
 import { Utils } from '../utils';
@@ -20,25 +21,26 @@ export class Main implements OnInit {
 
   constructor(
     public router: Router,
+    private store: Store<any>,
     public storageService: StorageService
   ) {
     if(!this.storageService.initialized) {
       router.navigate(['menu']);
     } else {
       this.username = this.storageService.listen('name', this.updateName.bind(this));
-      this.money = Utils.toCurrency(this.storageService.listen('money', this.updateMoney.bind(this)));
+      
+      this.store.select('MoneyReducer')
+        .subscribe(value => this.money = Utils.toCurrency(value));
     }
   }
 
   //callbacks
   private updateName = val => this.username = val;
-  private updateMoney = val => Utils.toCurrency(this.money = val);
 
   public ngOnInit() {}
 
   public ngOnDestroy() {
     this.storageService.unlisten('name', this.updateName);
-    this.storageService.unlisten('money', this.updateMoney);
   }
 
 }

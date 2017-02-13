@@ -4,7 +4,9 @@ import {
   Input 
 } from '@angular/core';
 import { Utils } from '../../../utils';
-import { StorageService, DefinesService } from '../../../services';
+import { Store } from '@ngrx/store'
+import { DefinesService } from '../../../services';
+import { Actions } from '../../../services';
 
 @Component({
   selector: 'accept-reject',
@@ -23,18 +25,18 @@ export class AcceptReject  implements OnInit{
   private list;
   
   constructor(
-    private storageService: StorageService,
-    private definesService: DefinesService
+    private definesService: DefinesService,
+    private store: Store<any>
   ) {
 
   }
 
   public ngOnInit() {
-    this.storageMoney = this.storageService.listen('money', this.updateStorageMoney.bind(this));
+    this.store.select('ToBuyReducer')
+      .subscribe(list => this.updateMoney(list));
 
-    let list = this.storageService.listen('toBuy', this.updateList.bind(this));
-    this.list = list;
-    this.updateMoney(list);
+    this.store.select('MoneyReducer')
+      .subscribe((value:number) => this.storageMoney = value);
   }
 
   private get enough() {
@@ -45,11 +47,23 @@ export class AcceptReject  implements OnInit{
     return Number(this.money);
   }
 
+  private accept() {
+    this.store.dispatch({type: Actions.MONEY.SUBSTRACT_MONEY, payload: this.money});
+    this.list.forEach(function(n, i) {
+      this.store.dispatch({type: Actions.INVENTORY.ADD_ITEMS, id: i, number: n});
+    }.bind(this))
+    this.store.dispatch({type: Actions.TO_BUY.CLEAR_TO_BUY});
+  }
+
   private reject() {
-    this.storageService.setItem('toBuy', []);
+    this.store.dispatch({type: Actions.TO_BUY.CLEAR_TO_BUY});
   }
 
   private updateMoney(list) {
+    if(!list)
+      return;
+      
+    this.list = list;
     let materials = this.definesService.materialsStatic;
     if(!materials.length)
       return;
@@ -61,18 +75,5 @@ export class AcceptReject  implements OnInit{
       }
     })
     this.money = Utils.toCurrency(money);
-    console.log(this.money);
-  }
-
-  //callbacks
-  private updateStorageMoney = val => this.storageMoney = val;
-  private updateList = val => {
-    this.list = val;
-    this.updateMoney(val);
-  }
-  
-  public ngOnDestroy() {
-    this.storageService.unlisten('money', this.updateStorageMoney);
-    this.storageService.unlisten('toBuy', this.updateList);
   }
 }

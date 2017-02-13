@@ -14,6 +14,7 @@ import {
   RouterModule,
   PreloadAllModules,
 } from '@angular/router';
+import { Store, provideStore } from '@ngrx/store';
 
 /*
  * Platform and Environment providers/directives/pipes
@@ -23,7 +24,7 @@ import { ROUTES } from './app.routes';
 // App is our top level component
 import { AppComponent } from './app.component';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
-import { StorageService, DefinesService } from './services';
+import { StorageService, DefinesService, Reducers, Actions } from './services';
 import { MenuComponents } from './menu';
 import { MainComponents } from './main';
 import { UtilsList } from './utils';
@@ -43,7 +44,7 @@ const APP_PROVIDERS = [
  * `AppModule` is the main entry point into Angular2's bootstraping process
  */
 @NgModule({
-  bootstrap: [ AppComponent ],
+  bootstrap: [ AppComponent],
   declarations: [
     AppComponent,
     MenuComponents,
@@ -60,6 +61,7 @@ const APP_PROVIDERS = [
   providers: [ // expose our Services and Providers into Angular's dependency injection
     StorageService,
     DefinesService,
+    provideStore(Reducers),
     UtilsList,
     ENV_PROVIDERS,
     APP_PROVIDERS
@@ -67,6 +69,10 @@ const APP_PROVIDERS = [
 })
 export class AppModule {
 
-  constructor() { }
+  constructor(
+    private store: Store<any>
+  ) { 
+    this.store.dispatch({type: Actions.MONEY.ADD_MONEY, payload: 100});
+  }
 
 }

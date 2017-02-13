@@ -4,6 +4,8 @@ import {
   Input,
   Output
 } from '@angular/core';
+import { Store } from '@ngrx/store';
+
 import { StorageService } from '../../../services';
 import { ResourceItemService } from './resourceItem.service';
 
@@ -19,32 +21,28 @@ export class ResourceItem implements OnInit {
 
   @Input() public info; 
   public username: String;
-  public inStorage: String;
+  public itemsInStore: number;
 
   private minTickerValue: number = 0;
 
   constructor(
     public storageService: StorageService,
+    private store: Store<any>,
     private resourceItemService: ResourceItemService
   ) {}
 
-  public localState: any;
-  public ngOnInit() {      
+  public ngOnInit() {
     this.username = this.storageService.listen('name', this.updateName.bind(this));
-    this.inStorage = this.storageService.listen('inventory['+this.info.id+']', this.updateInStorage.bind(this)) || 0;
-  }
-  
-  //callbacks
-  private updateName = (val) => { this.username = val };
-  private updateInStorage = (val) => { this.inStorage = val };
 
-  public tickerChange(val) {
-    //console.log(this.info.name + ':', val);
+    this.store.select('InventoryReducer')
+      .subscribe(list => this.itemsInStore = list[this.info.id] || 0);
   }
+
+  private updateName = name => this.username = name;
+  
 
   public ngOnDestroy() {
     this.storageService.unlisten('name', this.updateName);
-    this.storageService.unlisten('inventory['+this.info.id+']', this.updateInStorage);
   }
 
 }
