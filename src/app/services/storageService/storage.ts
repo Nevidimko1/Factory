@@ -44,10 +44,7 @@ export class Storage {
       money: 100
     };
 
-    localStorage.setItem(STORAGE, this.getSettable({
-      name: username,
-      money: 100
-    }));
+    localStorage.setItem(STORAGE, this.getSettable(newData));
 
     this.store.dispatch({type: Actions.NAME.SET_NAME, payload: newData.name});
     this.store.dispatch({type: Actions.MONEY.ADD_MONEY, payload: newData.money});
