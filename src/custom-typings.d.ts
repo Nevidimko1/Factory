@@ -134,6 +134,7 @@ interface Global extends GlobalEnvironment  {}
 interface Resource {
   icon;
   name;
+  group,
   level;
   price;
   id;

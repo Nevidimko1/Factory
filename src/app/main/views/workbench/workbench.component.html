@@ -11,11 +11,11 @@
           </div>
         </div>
       </div>
-      <div class="col-xs-4 col-sm-6 col-md-8 section">
+      <div class="col-xs-4 col-sm-6 col-md-8 materials-section">
         <div class="panel">
           <div class="panel-heading text-center">Материалы</div>
-          <div class="panel-body">
-            
+          <div class="panel-body" (click)="selectMaterial($event)">
+            <wb-res-item *ngFor="let res of filteredMaterialsList" [info]="res" [ngClass]="{'selected': selectedItem === res.id}" id="wb-res-item-{{res.id}}"></wb-res-item>
           </div>
         </div>
       </div>

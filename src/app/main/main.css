@@ -7,7 +7,22 @@
 .main-header {
   height: 40px;
   color: #ededed;
-  background-color: #434343;
+  background-color: #545454;
+  border-bottom: 1px solid #434343;
+}
+
+.name {
+  height: 100%;
+  font-size: 20px;
+  line-height: 40px;
+  font-weight: bold;
+}
+
+.money {
+  height: 100%;
+  font-size: 14px;
+  line-height: 40px;
+  font-weight: bold;
 }
 
 .main-navigation {

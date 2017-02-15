@@ -6,7 +6,7 @@
   height: 100%;
 }
 
-.content .col-xs-12, .content .col-xs-12 .row, .section, .panel {
+.content .col-xs-12, .content .col-xs-12 .row, .section, .materials-section, .panel {
   height: 100%;
 }
 
@@ -16,6 +16,10 @@
 
 .section {
   padding: 5px;
+}
+
+.materials-section {
+  padding: 5px 0 5px 0;
 }
 
 .panel {
@@ -44,12 +48,15 @@
 
 .list-group-item {
   border-radius: 0;
-  height: 25px;
-  line-height: 25px;
-  padding: 0 0 0 10px;
+  line-height: 15px;
+  padding: 5px 0 5px 10px;
   background-color: transparent;
   border: none;
   cursor: pointer;
+}
+
+.selected {
+  background: #bababa;
 }
 
 .list-group-item.active, .list-group-item.active:hover, .list-group-item.active:focus {
