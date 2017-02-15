@@ -45,8 +45,11 @@ export class AcceptReject  implements OnInit{
       .subscribe((materials: Array<Resource>) => this.materials = materials);
   }
 
-  private get enough() {
-    return this.storageMoney >= Number(this.money) && Number(this.money) !== 0;
+  private get canAccept() {
+    if(this.behavior === 'buy') 
+      return this.storageMoney >= Number(this.money) && Number(this.money) !== 0;
+    else
+      return Number(this.money) !== 0;
   }
 
   private get moreThanZero() {
