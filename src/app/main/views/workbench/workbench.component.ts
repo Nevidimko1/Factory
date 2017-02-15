@@ -41,8 +41,12 @@ export class WorkbenchComponent implements OnInit{
 
   private get filteredMaterialsList() {
     return _.filter(this.materialsList, (item: Resource) => {
-      return this.selectedGroup < 0 || (item.group === this.selectedGroup && item.group >= 0);
+      return this.selectedGroup < 0 && item.level !== 1 || (item.group === this.selectedGroup && item.group >= 0);
     });
+  }
+
+  private get selectedMaterialName() {
+    return this.materialsList && this.materialsList[this.selectedItem] && this.materialsList[this.selectedItem].name;
   }
 
   public ngOnInit() {
@@ -51,9 +55,9 @@ export class WorkbenchComponent implements OnInit{
 
     this.store.select('ResourcesReducer')
       .subscribe((list: Array<Resource>) => {
-        this.materialsList = _.filter(list, o => o.level !== 1);
-        if(this.materialsList[0])
-          this.selectedItem = this.materialsList[0].id;
+        this.materialsList = list;
+        if(this.filteredMaterialsList[0])
+          this.selectedItem = this.filteredMaterialsList[0].id;
       });
   }
 

@@ -4,9 +4,10 @@
 
 .content {
   height: 100%;
+  margin: 0;
 }
 
-.content .col-xs-12, .content .col-xs-12 .row, .section, .materials-section, .panel {
+.section, .materials-section, .panel {
   height: 100%;
 }
 
@@ -20,6 +21,10 @@
 
 .materials-section {
   padding: 5px 0 5px 0;
+}
+
+.materials-section .panel .panel-body {
+  padding: 2px !important;
 }
 
 .panel {
@@ -38,7 +43,7 @@
 .panel-body {
   height: calc(100% - 25px);
   background-color: #D7D7D8;
-  padding: 2px;
+  padding: 0;
   overflow: auto;
 }
 
@@ -48,8 +53,8 @@
 
 .list-group-item {
   border-radius: 0;
-  line-height: 15px;
-  padding: 5px 0 5px 10px;
+  line-height: 12px;
+  padding: 5px;
   background-color: transparent;
   border: none;
   cursor: pointer;
@@ -64,4 +69,13 @@
 
 .res-item {
   padding: 0;
+}
+
+.groups {
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.craft .name {
+  font-weight: bold;
 }
