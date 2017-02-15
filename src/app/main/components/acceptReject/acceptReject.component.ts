@@ -31,7 +31,8 @@ export class AcceptReject  implements OnInit{
   }
 
   public ngOnInit() {
-    this.store.select('ToBuyReducer')
+    let listReducer = this.behavior === 'buy' ? 'ToBuyReducer' : 'ToSellReducer';
+    this.store.select(listReducer)
       .subscribe(list => {
         this.list = list;
         this.updateMoney();
@@ -53,15 +54,26 @@ export class AcceptReject  implements OnInit{
   }
 
   private accept() {
-    this.store.dispatch({type: Actions.MONEY.SUBSTRACT_MONEY, payload: this.money});
-    this.list.forEach(function(n, i) {
-      this.store.dispatch({type: Actions.INVENTORY.ADD_ITEMS, id: i, number: n});
-    }.bind(this))
-    this.store.dispatch({type: Actions.TO_BUY.CLEAR_TO_BUY});
+    if(this.behavior === 'buy') {
+      this.store.dispatch({type: Actions.MONEY.SUBSTRACT_MONEY, payload: Number(this.money)});
+      this.list.forEach(function(n, i) {
+        this.store.dispatch({type: Actions.INVENTORY.ADD_ITEMS, id: i, number: n});
+      }.bind(this))
+      this.store.dispatch({type: Actions.TO_BUY.CLEAR_TO_BUY});
+    } else {
+      this.store.dispatch({type: Actions.MONEY.ADD_MONEY, payload: Number(this.money)});
+      this.list.forEach(function(n, i) {
+        this.store.dispatch({type: Actions.INVENTORY.SUBSTRACT_ITEMS, id: i, number: n});
+      }.bind(this))
+      this.store.dispatch({type: Actions.TO_SELL.CLEAR_TO_SELL});
+    }
   }
 
   private reject() {
-    this.store.dispatch({type: Actions.TO_BUY.CLEAR_TO_BUY});
+    if(this.behavior === 'buy')
+      this.store.dispatch({type: Actions.TO_BUY.CLEAR_TO_BUY});
+    else
+      this.store.dispatch({type: Actions.TO_SELL.CLEAR_TO_SELL});
   }
 
   private updateMoney() {

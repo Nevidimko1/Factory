@@ -13,7 +13,8 @@ import { StorageService } from '../../../services';
   templateUrl: './shop.component.html'
 })
 export class ShopComponent implements OnInit {
-  private materialsList;  
+  private materialsList;
+  private behavior = 'buy';
 
   constructor(
     private storageService: StorageService,

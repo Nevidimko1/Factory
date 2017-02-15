@@ -19,6 +19,8 @@ import { ResourceItemService } from './resourceItem.service';
 export class ResourceItem implements OnInit {
 
   @Input() public info;
+  @Input() public behavior;
+  
   public itemsInStore: number;
   private minTickerValue: number = 0;
 

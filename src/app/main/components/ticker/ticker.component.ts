@@ -24,6 +24,7 @@ export class Ticker implements OnInit {
   @Input() public itemId: number;
   @Input() public minValue: number;
   @Input() public maxValue: number;
+  @Input() public behavior: string;
   
   @ViewChild('myButton') myButton:ElementRef;
 
@@ -31,6 +32,9 @@ export class Ticker implements OnInit {
   private holdTimeout;
   private pressCycle: number = 1;
   private subs:Observable<MouseEvent>[] = [];
+
+  private incAction: string;
+  private decAction: string;
 
   constructor(
     private _zone:NgZone,
@@ -40,7 +44,11 @@ export class Ticker implements OnInit {
   } 
 
   ngOnInit() {
-    this.store.select('ToBuyReducer')
+    this.incAction = this.behavior === 'buy' ? Actions.TO_BUY.INCREMENT_TO_BUY : Actions.TO_SELL.INCREMENT_TO_SELL;
+    this.decAction = this.behavior === 'buy' ? Actions.TO_BUY.DECREMENT_TO_BUY : Actions.TO_SELL.DECREMENT_TO_SELL;
+    let listReducer = this.behavior === 'buy' ? 'ToBuyReducer' : 'ToSellReducer';
+
+    this.store.select(listReducer)
       .subscribe(list => {
         this.value = list[this.itemId] || 0;
       });
@@ -83,14 +91,14 @@ export class Ticker implements OnInit {
   }
 
   private hold(inc) {
-    if(!inc && (this.value === this.minValue && this.minValue != undefined) || inc && (this.value === this.maxValue && this.maxValue != undefined))
+    if((!inc && this.value === this.minValue && this.minValue != undefined) || (inc && this.value === this.maxValue && this.behavior === 'sell'))
       return this.stop();
 
     this._zone.run(() => {
       if(inc)
-        this.store.dispatch({type: Actions.TO_BUY.INCREMENT_TO_BUY, payload: this.itemId});
+        this.store.dispatch({type: this.incAction, payload: this.itemId});
       else
-        this.store.dispatch({type: Actions.TO_BUY.DECREMENT_TO_BUY, payload: this.itemId});
+        this.store.dispatch({type: this.decAction, payload: this.itemId});
     });    
 
     this.holdTimeout = setTimeout(this.hold.bind(this), 200 / this.pressCycle, inc);

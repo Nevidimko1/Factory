@@ -5,29 +5,16 @@ import {
 import { Store } from '@ngrx/store';
 import * as _ from 'lodash';
 
-import { StorageService, Actions } from '../../../services';
+import { StorageService } from '../../../services';
 
 @Component({
   selector: 'storage',
-  styles: [`
-    .list {
-      display: inline-block;
-      overflow-y: auto;
-      height: calc(100% - 40px);
-      width: 100%;
-    }
-  `],
-  template: `
-    <div class="col-xs-12 h4">Склад</div>
-    <div class="list">
-      <div class="res-list">
-        <res-item *ngFor="let res of materialsList" [info]="res"></res-item>
-      </div>
-    </div>
-  `
+  styleUrls: ['./storage.component.css'],
+  templateUrl: './storage.component.html'
 })
 export class StorageComponent{
-  private materialsList;  
+  private materialsList;
+  private behavior = 'sell';
 
   constructor(
     private storageService: StorageService,
@@ -39,7 +26,7 @@ export class StorageComponent{
   public ngOnInit() {
     this.store.select('ResourcesReducer')
       .subscribe((list: Array<Resource>) => {
-        this.materialsList = _.filter(list, o => o.level !== 1);
+        this.materialsList = list;
       });
   }
 }

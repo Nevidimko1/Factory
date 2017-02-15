@@ -4,4 +4,4 @@
 </div>
 <div class="labl">Цена: {{info.price}}€</div>
 <div class="labl">Кол-во: {{itemsInStore}}</div>
-<ticker [itemId]="info.id" [minValue]="minTickerValue"></ticker>
+<ticker [itemId]="info.id" [minValue]="minTickerValue" [maxValue]="itemsInStore" [behavior]="behavior"></ticker>
