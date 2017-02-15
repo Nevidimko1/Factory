@@ -8,12 +8,9 @@ import { Store } from '@ngrx/store';
 @Component({
   selector: 'wb-res-item',
   styles: [`
-    :host {
-      position: relative;
-      display: inline-block;
-      width: 230px;
+    .wrapper {
+      margin: 2px;
       border: 1px solid #6C6D70;
-      margin: 5px 0 0 5px;
       font-weight: bold;
       font-size: 13px;
       line-height: 15px;
@@ -36,16 +33,23 @@ import { Store } from '@ngrx/store';
       margin: 0 auto;
       padding: 3px;
     }
+    
+    .selected {
+      background: #bababa;
+    }
   `],
   template: `
-    <div class="head">
-      <div class="icon res res-{{info.icon}}"></div>
-      <div class="name">{{info.name}}</div>
+    <div class="wrapper" [ngClass]="{'selected': selected}">
+      <div class="head">
+        <div class="icon res res-{{info.icon}}"></div>
+        <div class="name">{{info.name}}</div>
+      </div>
     </div>
   `
 })
 export class WbResourceItem {
 
   @Input() public info;
+  @Input() public selected;
 
 }

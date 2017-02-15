@@ -15,7 +15,7 @@
         <div class="panel">
           <div class="panel-heading text-center">Материалы</div>
           <div class="panel-body" (click)="selectMaterial($event)">
-            <wb-res-item *ngFor="let res of filteredMaterialsList" [info]="res" [ngClass]="{'selected': selectedItem === res.id}" id="wb-res-item-{{res.id}}"></wb-res-item>
+            <wb-res-item class="col-md-4 col-lg-3 res-item" *ngFor="let res of filteredMaterialsList" [info]="res" [selected]="selectedItem === res.id" id="wb-res-item-{{res.id}}"></wb-res-item>
           </div>
         </div>
       </div>
