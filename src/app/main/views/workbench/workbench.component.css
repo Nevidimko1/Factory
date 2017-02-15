@@ -1,0 +1,60 @@
+.upperPanel {
+  height: 30px;
+}
+
+.content {
+  height: 100%;
+}
+
+.content .col-xs-12, .content .col-xs-12 .row, .section, .panel {
+  height: 100%;
+}
+
+.content .col-xs-12 .row {
+  margin: 0;
+}
+
+.section {
+  padding: 5px;
+}
+
+.panel {
+  border: 1px solid #6C6D70;
+  border-radius: 0;
+}
+
+.panel-heading {
+  padding: 2px 15px;
+  color: #ededed;
+  font-weight: bold;
+  background-color: #6C6D70;
+  border-radius: 0;
+}
+
+.panel-body {
+  height: calc(100% - 25px);
+  background-color: #D7D7D8;
+  padding: 0;
+  overflow: auto;
+}
+
+.panel-body .list-group {
+  margin: 0;
+}
+
+.list-group-item {
+  border-radius: 0;
+  height: 25px;
+  line-height: 25px;
+  padding: 0 0 0 10px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.list-group-item.active, .list-group-item.active:hover, .list-group-item.active:focus {
+  z-index: 2;
+  color: inherit;
+  background-color: #bbb;
+  border: none;
+}

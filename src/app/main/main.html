@@ -3,13 +3,15 @@
   <div class="col-xs-6 text-right h5">{{money}}€</div>
 </div>
 
-<div class="text-center main-navigation">
-  <a class="nav-link" [routerLink]="['shop']">Магазин</a>
-  <a class="nav-link" [routerLink]="['workbench']">Мастерская</a>
-  <a class="nav-link" [routerLink]="['storage']">Склад</a>
-  <a class="nav-link" [routerLink]="['factory']">Производство</a>
-  <a class="nav-link" [routerLink]="['auction']">Аукцион</a>
-  <a class="nav-link" [routerLink]="['stats']">Статистика</a>
+<div class="main-navigation">
+  <ul class="nav navbar-nav">
+    <li [routerLinkActive]="['active']"><a [routerLink]="['shop']">Магазин</a></li>
+    <li [routerLinkActive]="['active']"><a [routerLink]="['workbench']">Мастерская</a></li>
+    <li [routerLinkActive]="['active']"><a [routerLink]="['storage']">Склад</a></li>
+    <li [routerLinkActive]="['active']"><a [routerLink]="['factory']">Производство</a></li>
+    <li [routerLinkActive]="['active']"><a [routerLink]="['auction']">Аукцион</a></li>
+    <li [routerLinkActive]="['active']"><a [routerLink]="['stats']">Статистика</a></li>
+  </ul>
 </div>
 
 <div class="main-body">

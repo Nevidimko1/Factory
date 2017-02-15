@@ -1,0 +1,32 @@
+<div class="row content">
+  <div class="col-xs-12">
+    <div class="row">
+      <div class="col-xs-4 col-sm-3 col-md-2 section">
+        <div class="panel">
+          <div class="panel-heading text-center">Группы</div>
+          <div class="panel-body">
+            <div class="list-group">
+              <div class="list-group-item" [ngClass]="{'active': selectedGroup === group.id}" *ngFor="let group of groupsList" (click)="selectGroup(group.id)">{{group.name}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-4 col-sm-6 col-md-8 section">
+        <div class="panel">
+          <div class="panel-heading text-center">Материалы</div>
+          <div class="panel-body">
+            
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-4 col-sm-3 col-md-2 section">
+        <div class="panel">
+          <div class="panel-heading text-center">Крафт</div>
+          <div class="panel-body">
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

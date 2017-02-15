@@ -21,11 +21,17 @@ export class Storage {
           this.store.dispatch({type: Actions.RESOURCES.SET_RESOURCES, payload: materials});
         });
       });
+    
+    //load groups
+    this.http.get('assets/groups.json')
+      .subscribe(groups => {
+        this.store.dispatch({type: Actions.GROUPS.SET_GROUPS, payload: groups.json()});
+      });
   }
 
   public saveGameExists(): boolean {
     let data = this.getGettable(localStorage.getItem(STORAGE));
-    return !!data.name;
+    return !!(data && data.name);
   }
 
   public loadGame(): void {
