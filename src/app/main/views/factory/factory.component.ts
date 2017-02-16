@@ -5,9 +5,7 @@ import {
 
 @Component({
   selector: 'factory',
-  template: `
-    <div class="col-xs-12 h4">Производство</div>
-  `
+  template: ``
 })
 export class FactoryComponent{
 

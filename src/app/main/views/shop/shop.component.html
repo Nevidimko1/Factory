@@ -1,9 +1,13 @@
-<div class="container-fluid">
-  <accept-reject class="col-xs-8 pull-right" [behavior]="behavior" acceptName="Купить" rejectName="Отмена"></accept-reject>
-</div>
-
-<div class="list">
-  <div class="res-list">
-    <res-item *ngFor="let res of materialsList" [info]="res" [behavior]="behavior"></res-item>
+<div class="row content">
+  <div class="col-xs-12 section">
+    <div class="panel">
+      <div class="panel-heading text-center">
+        Основные материалы
+        <accept-reject class="pull-right" [behavior]="behavior" acceptName="Купить" rejectName="Отмена"></accept-reject>
+      </div>
+      <div class="panel-body">
+        <res-item  class="col-xs-12 col-sm-6 col-md-3 col-lg-2 res-item" *ngFor="let res of materialsList" [info]="res" [behavior]="behavior"></res-item>
+      </div>
+    </div>
   </div>
 </div>

@@ -5,9 +5,7 @@ import {
 
 @Component({
   selector: 'auction',
-  template: `
-    <div class="col-xs-12 h4">Аукцион</div>
-  `
+  template: ``
 })
 export class AuctionComponent{
   

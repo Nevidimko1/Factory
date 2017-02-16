@@ -1,10 +1,46 @@
-.upperPanel {
-  height: 30px;
+.content {
+  height: 100%;
+  margin: 0;
 }
 
-.list {
+.section, .panel {
+  height: 100%;
+}
+
+.section {
+  padding: 2px;
+}
+
+.panel {
+  border: 1px solid #6C6D70;
+  border-radius: 0;
+}
+
+.panel-heading {
+  position: relative;
   display: inline-block;
-  overflow-y: auto;
-  height: calc(100% - 40px);
   width: 100%;
+  height: 25px;
+  line-height: 25px;
+  padding: 0;
+  color: #ededed;
+  font-weight: bold;
+  background-color: #6C6D70;
+  border-radius: 0;
+}
+
+.panel-body {
+  height: calc(100% - 25px);
+  background-color: #D7D7D8;
+  padding: 2px;
+  overflow: auto;
+}
+
+accept-reject {
+  position: absolute;
+  right: 0;
+}
+
+.res-item {
+  padding: 0;
 }
