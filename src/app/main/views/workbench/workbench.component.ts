@@ -6,6 +6,7 @@ import { Store } from '@ngrx/store';
 import * as _ from 'lodash';
 
 import { Actions } from '../../../services';
+import { Utils } from '../../../utils';
 
 @Component({
   selector: 'workbench',
@@ -30,6 +31,7 @@ export class WorkbenchComponent implements OnInit{
     } else {
       this.selectedGroup = -1;
     }
+    this.toCraft = 1;
     this.selectedItem = this.filteredMaterialsList[0].id;
   }
 
@@ -39,8 +41,10 @@ export class WorkbenchComponent implements OnInit{
       if(o.localName === 'wb-res-item')
         id = o.id.replace('wb-res-item-', '');
     });
-    if(id >= 0)
+    if(id >= 0) {
       this.selectedItem = Number(id);
+      this.toCraft = 1;
+    }
   }
 
   private craft() {
@@ -60,6 +64,10 @@ export class WorkbenchComponent implements OnInit{
 
   private itemsInStorage(id) {
     return this.inventory[id] || 0;
+  }
+
+  private price(id) {
+    return Utils.toCurrency(this.materialsList && this.materialsList[id].price || 0);
   }
 
   private get filteredMaterialsList() {

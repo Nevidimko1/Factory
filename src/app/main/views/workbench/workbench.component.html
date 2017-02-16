@@ -25,7 +25,10 @@
           <div class="icon res res-{{selectedMaterialIcon}}"></div>
           <div class="name">{{selectedMaterialName}}</div>
         </div>
-        <div class="col-xs-12 in-storage text-right">{{itemsInStorage(selectedItem)}}<small> шт.</small></div>
+        <div class="col-xs-12 in-storage">
+          <span>{{price(selectedItem)}}€</span>
+          <span class="pull-right">{{itemsInStorage(selectedItem)}}<small> шт.</small></span>
+        </div>
 
         <div class="col-xs-12 recipe-label" *ngIf="selectedMaterialRecipe.length">Рецепт:</div>
         <div class="recipe-item" *ngFor="let res of selectedMaterialRecipe; let i = index;">
