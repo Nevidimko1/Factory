@@ -39,7 +39,7 @@
 
         <div class="actions" *ngIf="selectedMaterialRecipe.length">
           <div class="col-xs-7 pd text-center">
-            <ticker [minValue]=1 (change)="toCraftChange($event)"></ticker>
+            <ticker [minValue]=1 (change)="toCraftChange($event)" [value]="toCraft"></ticker>
           </div>
           <div class="col-xs-5 text-center">
             <button type="button" class="btn btn-primary btn-xs" [disabled]="!canCraft" (click)="craft()">Создать</button>

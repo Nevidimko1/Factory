@@ -52,6 +52,7 @@ export class WorkbenchComponent implements OnInit{
     this.selectedMaterialRecipe.forEach((res, i) => {
       this.store.dispatch({type: Actions.INVENTORY.SUBSTRACT_ITEMS, payload: {id: res.id, number: this.neededResourcesForCraft(i)}});
     });
+    this.toCraft = 1;
   }
 
   private toCraftChange(n) {
@@ -67,7 +68,7 @@ export class WorkbenchComponent implements OnInit{
   }
 
   private price(id) {
-    return Utils.toCurrency(this.materialsList && this.materialsList[id].price || 0);
+    return Utils.toCurrency(this.materialsList && this.materialsList[id] && this.materialsList[id].price || 0);
   }
 
   private get filteredMaterialsList() {

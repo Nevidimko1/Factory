@@ -27,12 +27,12 @@ export class Ticker implements OnInit {
   @Input() public minValue: number;
   @Input() public maxValue: number;
   @Input() public behavior: string;
+  @Input() public value: number = 0;
 
   @Output() public change: EventEmitter<number> = new EventEmitter();
   
   @ViewChild('myButton') myButton:ElementRef;
 
-  private value: number = 0;
   private holdTimeout;
   private pressCycle: number = 1;
   private subs:Observable<MouseEvent>[] = [];
