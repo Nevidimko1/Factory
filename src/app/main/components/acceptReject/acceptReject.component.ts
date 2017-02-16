@@ -42,7 +42,10 @@ export class AcceptReject  implements OnInit{
       .subscribe((value:number) => this.storageMoney = value);
       
     this.store.select('ResourcesReducer')
-      .subscribe((materials: Array<Resource>) => this.materials = materials);
+      .subscribe((materials: Array<Resource>) => {
+        this.materials = materials;
+        this.updateMoney();
+      });
   }
 
   private get canAccept() {
