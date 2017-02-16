@@ -59,7 +59,6 @@ export class WorkbenchComponent implements OnInit{
   }
 
   private itemsInStorage(id) {
-    console.log(id);
     return this.inventory[id] || 0;
   }
 

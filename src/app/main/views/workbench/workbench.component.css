@@ -86,7 +86,6 @@
 
 /* craft */
 .craft {
-  padding-top: 5px;
   font-weight: bold;
 }
 
@@ -95,32 +94,44 @@
 }
 
 .head {
+  height: 50px;
   display: flex;
 }
 
 .head .icon {
-  margin: 3px;
+  margin: 8px 5px;
   background-color: #fff;
   display: inline-block;
 }
 
 .head .name {
   display: inline-block;
-  max-width: 190px;
   margin: 0 auto;
-  padding: 3px;
+  padding: 5px 3px;
 }
 
 .in-storage {
+  height: 26px;
+  line-height: 26px;
   font-size: 14px;
-  margin-bottom: 20px;
+  border-top: 1px solid #6C6D70;
+  border-bottom: 1px solid #6C6D70;
 }
 
-.craft .ticker {
-  display: -webkit-box;
+.recipe-label {
+  font-size: 15px;
+  font-weight: bold;
+  padding: 0 !important;
+  margin: 5px 5px 10px 5px;
+}
+
+.craft .actions {
   margin-top: 20px;
-  margin-bottom: 10px;
+  height: 26px;
+  line-height: 22px;
   font-size: 14px;
+  border-top: 1px solid #6C6D70;
+  border-bottom: 1px solid #6C6D70;
 }
 
 .recipe-item {
@@ -132,8 +143,4 @@
 .recipe-item-name {
   padding-left: 5px !important;
   padding-right: 0 !important;
-}
-
-.btn {
-  border-radius: 0;
 }

@@ -29,7 +29,6 @@ import { Store } from '@ngrx/store';
 
     .name {
       display: inline-block;
-      max-width: 190px;
       margin: 0 auto;
       padding: 3px;
     }
