@@ -1,10 +1,12 @@
 button {
-  line-height: 0.5;
+  line-height: 0.3;
   height: 18px;
   width: 18px;
   font-size: 16px;
   padding: 0;
   font-weight: bold;
+  border-radius: 0;
+  border: 1px solid #6C6D70;
 }
 
 .labl {

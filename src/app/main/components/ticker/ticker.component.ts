@@ -2,9 +2,11 @@ import {
   Component,
   OnInit,
   Input,
+  Output,
   ElementRef, 
   NgZone, 
-  ViewChild
+  ViewChild,
+  EventEmitter
 } from '@angular/core';
 import { Store } from '@ngrx/store'
 import {Observable} from 'rxjs/Observable';
@@ -25,10 +27,12 @@ export class Ticker implements OnInit {
   @Input() public minValue: number;
   @Input() public maxValue: number;
   @Input() public behavior: string;
+
+  @Output() public change: EventEmitter<number> = new EventEmitter();
   
   @ViewChild('myButton') myButton:ElementRef;
 
-  private value: number;
+  private value: number = 0;
   private holdTimeout;
   private pressCycle: number = 1;
   private subs:Observable<MouseEvent>[] = [];
@@ -44,14 +48,19 @@ export class Ticker implements OnInit {
   } 
 
   ngOnInit() {
-    this.incAction = this.behavior === 'buy' ? Actions.TO_BUY.INCREMENT_TO_BUY : Actions.TO_SELL.INCREMENT_TO_SELL;
-    this.decAction = this.behavior === 'buy' ? Actions.TO_BUY.DECREMENT_TO_BUY : Actions.TO_SELL.DECREMENT_TO_SELL;
-    let listReducer = this.behavior === 'buy' ? 'ToBuyReducer' : 'ToSellReducer';
+    if(this.minValue >= 0)
+      this.value = this.minValue;
 
-    this.store.select(listReducer)
-      .subscribe(list => {
-        this.value = list[this.itemId] || 0;
-      });
+    if(this.behavior) {
+      this.incAction = this.behavior === 'buy' ? Actions.TO_BUY.INCREMENT_TO_BUY : Actions.TO_SELL.INCREMENT_TO_SELL;
+      this.decAction = this.behavior === 'buy' ? Actions.TO_BUY.DECREMENT_TO_BUY : Actions.TO_SELL.DECREMENT_TO_SELL;
+      let listReducer = this.behavior === 'buy' ? 'ToBuyReducer' : 'ToSellReducer';
+
+      this.store.select(listReducer)
+        .subscribe(list => {
+          this.value = list[this.itemId] || 0;
+        });
+    }
 
     this.manuallyBindToViewEvents();
   }
@@ -94,12 +103,21 @@ export class Ticker implements OnInit {
     if((!inc && this.value === this.minValue && this.minValue != undefined) || (inc && this.value === this.maxValue && this.behavior === 'sell'))
       return this.stop();
 
-    this._zone.run(() => {
-      if(inc)
-        this.store.dispatch({type: this.incAction, payload: this.itemId});
-      else
-        this.store.dispatch({type: this.decAction, payload: this.itemId});
-    });    
+    
+      this._zone.run(() => {
+        if(this.behavior) {
+          if(inc)
+            this.store.dispatch({type: this.incAction, payload: this.itemId});
+          else
+            this.store.dispatch({type: this.decAction, payload: this.itemId});
+        } else {
+          if(inc)
+            this.value++;
+          else
+            this.value--;
+          this.change.emit(this.value);
+        }
+      });
 
     this.holdTimeout = setTimeout(this.hold.bind(this), 200 / this.pressCycle, inc);
     if(this.pressCycle < 10)

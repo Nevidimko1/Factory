@@ -21,7 +21,24 @@
     <div class="panel">
       <div class="panel-heading text-center">Крафт</div>
       <div class="panel-body craft">
-        <div class="col-xs-12 text-center name">{{selectedMaterialName}}</div>
+        <div class="head">
+          <div class="icon res res-{{selectedMaterialIcon}}"></div>
+          <div class="name">{{selectedMaterialName}}</div>
+        </div>
+        <div class="col-xs-12 in-storage text-right">{{itemsInStorage(selectedItem)}}<small> шт.</small></div>
+        <div class="recipe-item" *ngFor="let res of selectedMaterialRecipe; let i = index;">
+          <div class="col-xs-7 recipe-item-name">{{res.name}}</div>
+          <div class="col-xs-2 pd text-right" [ngClass]="{'text-danger': neededResourcesForCraft(i) > itemsInStorage(res.id)}">{{neededResourcesForCraft(i)}}</div>
+          <div class="col-xs-3 pd text-left">/{{itemsInStorage(res.id)}}</div>
+        </div>
+        <div class="ticker">
+          <div class="col-xs-7 pd text-center">
+            <ticker [minValue]=1 (change)="toCraftChange($event)"></ticker>
+          </div>
+          <div class="col-xs-5 text-center">
+            <button type="button" class="btn btn-primary btn-xs" [disabled]="!canCraft" (click)="craft()">Создать</button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
