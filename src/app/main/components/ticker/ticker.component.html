@@ -1,5 +1,5 @@
-<div #myButton>
-  <button name="dec" class="btn btn-xs default">-</button>
+<div>
+  <button class="btn btn-xs default" (mousedown)="hold()" (mouseup)="stop()" (mouseout)="stop()">-</button>
   <div class="labl">{{value}}</div>
-  <button name="inc" class="btn btn-xs default">+</button>
+  <button class="btn btn-xs default" (mousedown)="hold(true)" (mouseup)="stop()" (mouseout)="stop()">+</button>
 </div>

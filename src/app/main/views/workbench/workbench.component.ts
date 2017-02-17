@@ -27,7 +27,9 @@ export class WorkbenchComponent implements OnInit{
 
   public ngOnInit() {
     this.store.select('GroupsReducer')
-      .subscribe(list => this.groupsList = list);
+      .subscribe((list: Array<Group>) => {
+        this.groupsList = _.filter(list, o => o.id >= 0);
+      });
 
     this.store.select('ResourcesReducer')
       .subscribe((list: Array<Resource>) => {

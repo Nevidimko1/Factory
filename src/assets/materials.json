@@ -3,6 +3,7 @@
         "icon": "diamonds",
         "name": "Алмазы",
 		"level": 1,
+        "group": -1,
         "price": 2502.48,
 		"id": 0
     },
@@ -10,6 +11,7 @@
         "icon": "bauxite",
         "name": "Бокситы",
 		"level": 1,
+        "group": -1,
         "price": 20.57,
 		"id": 1
     },
@@ -17,6 +19,7 @@
         "icon": "clay",
         "name": "Глина",
 		"level": 1,
+        "group": -1,
         "price": 0.88,
 		"id": 2
     },
@@ -24,6 +27,7 @@
         "icon": "wood",
         "name": "Древесина",
 		"level": 1,
+        "group": -1,
         "price": 11.11,
 		"id": 3
     },
@@ -31,6 +35,7 @@
         "icon": "ironore",
         "name": "Железная руда",
 		"level": 1,
+        "group": -1,
         "price": 9.81,
 		"id": 4
     },
@@ -38,6 +43,7 @@
         "icon": "gold",
         "name": "Золото",
 		"level": 1,
+        "group": -1,
         "price": 130.06,
 		"id": 5
     },
@@ -45,6 +51,7 @@
         "icon": "silicon",
         "name": "Кремний",
 		"level": 1,
+        "group": -1,
         "price": 9.75,
 		"id": 6
     },
@@ -52,6 +59,7 @@
         "icon": "mn",
         "name": "Марганец",
 		"level": 1,
+        "group": -1,
         "price": 16.22,
 		"id": 7
     },
@@ -59,6 +67,7 @@
         "icon": "colch",
         "name": "Медный колчедан",
 		"level": 1,
+        "group": -1,
         "price": 21.54,
 		"id": 8
     },
@@ -66,6 +75,7 @@
         "icon": "oil",
         "name": "Нефть",
 		"level": 1,
+        "group": -1,
         "price": 16.03,
 		"id": 9
     },
@@ -73,6 +83,7 @@
         "icon": "polymetallic",
         "name": "Полиметаллическая руда",
 		"level": 1,
+        "group": -1,
         "price": 21.23,
 		"id": 10
     },
@@ -80,6 +91,7 @@
         "icon": "minerals",
         "name": "Природные минералы",
 		"level": 1,
+        "group": -1,
         "price": 3.30,
 		"id": 11
     },
@@ -87,6 +99,7 @@
         "icon": "ilmenite",
         "name": "Титановая руда",
 		"level": 1,
+        "group": -1,
         "price": 14.12,
 		"id": 12
     },
@@ -94,6 +107,7 @@
         "icon": "coal",
         "name": "Уголь",
 		"level": 1,
+        "group": -1,
         "price": 11.74,
 		"id": 13
     },
@@ -101,6 +115,7 @@
         "icon": "cr",
         "name": "Хром",
 		"level": 1,
+        "group": -1,
         "price": 26.54,
 		"id": 14
     },
@@ -1962,35 +1977,35 @@
     {
         "icon": "chicken",
         "name": "Домашняя птица",
-        "group": -1,
+        "group": -2,
 		"recipe": [],
 		"id": 280
     },
     {
         "icon": "cow",
         "name": "Коровы",
-        "group": -1,
+        "group": -2,
 		"recipe": [],
 		"id": 281
     },
     {
         "icon": "sheep",
         "name": "Овцы",
-        "group": -1,
+        "group": -2,
 		"recipe": [],
 		"id": 282
     },
     {
         "icon": "bee",
         "name": "Пчёлы",
-        "group": -1,
+        "group": -2,
 		"recipe": [],
 		"id": 283
     },
     {
         "icon": "pig",
         "name": "Свиньи",
-        "group": -1,
+        "group": -2,
 		"recipe": [],
 		"id": 284
     },

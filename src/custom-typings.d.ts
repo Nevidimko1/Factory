@@ -139,3 +139,8 @@ interface Resource {
   price;
   id;
 }
+
+interface Group {
+  name;
+  id;
+}

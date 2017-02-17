@@ -1,12 +1,51 @@
 <div class="row content">
-  <div class="col-xs-12 section">
+  <div class="groups-section">
+    <div class="panel">
+      <div class="panel-heading text-center">
+        Группы
+      </div>
+      <div class="panel-body">
+        <div class="list-group">
+          <div class="list-group-item" [ngClass]="{'active': selectedGroup === group.id}" *ngFor="let group of groupsList" (click)="selectGroup(group.id)">{{group.name}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="materials-section">
     <div class="panel">
       <div class="panel-heading text-center">
         Материалы
-        <accept-reject class="pull-right" acceptName="Продать" rejectName="Отмена"></accept-reject>
+      </div>
+      <div class="panel-body" (click)="selectMaterial($event)">
+        <res-item  class="res-item" *ngFor="let res of filteredMaterialsList" [selected]="selectedItem === res.id"  [info]="res" id="res-item-{{res.id}}"></res-item>
+      </div>
+    </div>
+  </div>
+  <div class="sell-section">
+    <div class="panel">
+      <div class="panel-heading text-center">
+        Продать
       </div>
       <div class="panel-body">
-        <res-item  class="col-xs-12 col-sm-6 col-md-3 col-lg-2 res-item" *ngFor="let res of materialsList" [info]="res"></res-item>
+        <div class="res-info">
+          <div class="pic">
+            <div class="icon res res-{{selectedMaterialIcon}}"></div>
+          </div>
+          <div class="res-name text-center">{{selectedMaterialName}}</div>
+          <div class="labl text-right">{{itemsInStore}}</div>
+        </div>
+
+        <div class="col-xs-12 pd5 bordered">
+          <span>{{price}}€</span>
+          <span class="pull-right">{{itemsInStorage}}<small> шт.</small></span>
+        </div>
+
+        <div class="col-xs-6 pd5 to-sell">Количество:</div>
+        <ticker class="col-xs-6 pd5 to-sell" [minValue]=0 [maxValue]="itemsInStorage" (change)="toSellChange($event)" [value]="toSell"></ticker>
+
+        <div class="col-xs-12 pd5 bordered actions">
+          <accept-reject class="pull-right" (onAccept)="onAccept($event)" [canAccept]="canSell" [money]="toEarn" (onDecline)="onDecline($event)" acceptName="Продать" rejectName="Отмена"></accept-reject>
+        </div>
       </div>
     </div>
   </div>
