@@ -1,15 +1,29 @@
+:host {
+  display: inline-block;
+}
+
 .wrapper {
-  height: 70px;
+  height: 82px;
+  width: 82px;
   font-weight: bold;
   font-size: 13px;
-  line-height: 15px;
+  cursor: pointer;
   margin: 2px;
   border: 1px solid #6C6D70;
   background: #bababa;
 }
 
-.head {
-  display: flex;
+.content {
+  margin: 4px;
+  border: 1px solid #6C6D70;
+  background-color: #fff;
+}
+
+.pic {
+  text-align: center;
+  padding-top: 4px;
+  height: 50px;
+  border-bottom: 1px solid #6C6D70;
 }
 
 .icon {
@@ -18,19 +32,11 @@
   display: inline-block;
 }
 
-.name {
-  display: inline-block;
-  margin: 0 auto;
-  padding: 3px;
-}
-
 .labl {
-  padding-left: 3px;
-  line-height: 1;
+  padding: 0 5px;
+  line-height: 20px;
 }
-
-ticker {
-  position: absolute;
-  bottom: 10px;
-  right: 6px;
+    
+.selected {
+  background: #6C6D70;
 }

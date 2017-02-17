@@ -1,12 +1,39 @@
 <div class="row content">
-  <div class="col-xs-12 section">
+  <div class="materials-section">
     <div class="panel">
       <div class="panel-heading text-center">
         Основные материалы
-        <accept-reject class="pull-right" [behavior]="behavior" acceptName="Купить" rejectName="Отмена"></accept-reject>
+      </div>
+      <div class="panel-body" (click)="selectMaterial($event)">
+        <res-item  class="res-item" *ngFor="let res of materialsList" [selected]="selectedItem === res.id"  [info]="res" id="res-item-{{res.id}}"></res-item>
+      </div>
+    </div>
+  </div>
+  <div class="buy-section">
+    <div class="panel">
+      <div class="panel-heading text-center">
+        Купить
       </div>
       <div class="panel-body">
-        <res-item  class="col-xs-12 col-sm-6 col-md-3 col-lg-2 res-item" *ngFor="let res of materialsList" [info]="res" [behavior]="behavior"></res-item>
+        <div class="res-info">
+          <div class="pic">
+            <div class="icon res res-{{selectedMaterialIcon}}"></div>
+          </div>
+          <div class="res-name text-center">{{selectedMaterialName}}</div>
+          <div class="labl text-right">{{itemsInStore}}</div>
+        </div>
+
+        <div class="col-xs-12 pd5 bordered">
+          <span>{{price}}€</span>
+          <span class="pull-right">{{itemsInStorage}}<small> шт.</small></span>
+        </div>
+
+        <div class="col-xs-6 pd5 to-buy">Количество:</div>
+        <ticker class="col-xs-6 pd5 to-buy" [minValue]=0 (change)="toBuyChange($event)" [value]="toBuy"></ticker>
+
+        <div class="col-xs-12 pd5 bordered actions">
+          <accept-reject class="pull-right" (onAccept)="onAccept($event)" [canAccept]="canBuy" [money]="toPay" (onDecline)="onDecline($event)" acceptName="Купить" rejectName="Отмена"></accept-reject>
+        </div>
       </div>
     </div>
   </div>

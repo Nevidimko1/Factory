@@ -1,5 +1,5 @@
 <div class="pull-right">
-  <button type="button" class="btn btn-primary btn-xs" [disabled]="!canAccept" (click)="accept()">{{acceptName}}</button>
-  <button type="button" class="btn btn-danger btn-xs" (click)="reject()">{{rejectName}}</button>
+  <button type="button" class="btn btn-primary btn-xs" [disabled]="!canAccept" (click)="onAccept.emit()">{{acceptName}}</button>
+  <button type="button" class="btn btn-danger btn-xs" (click)="onDecline.emit()">{{rejectName}}</button>
 </div>
-<span class="money pull-right" [ngClass]="{'text-success': canAccept || !moreThanZero, 'text-danger': !canAccept && moreThanZero}">{{money}}€</span>
+<span class="money pull-right" [ngClass]="{'text-success': canAccept || !moreThanZero, 'text-danger': !canAccept && moreThanZero}">{{value}}€</span>

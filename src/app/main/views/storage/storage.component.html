@@ -3,10 +3,10 @@
     <div class="panel">
       <div class="panel-heading text-center">
         Материалы
-        <accept-reject class="pull-right" [behavior]="behavior" acceptName="Продать" rejectName="Отмена"></accept-reject>
+        <accept-reject class="pull-right" acceptName="Продать" rejectName="Отмена"></accept-reject>
       </div>
       <div class="panel-body">
-        <res-item  class="col-xs-12 col-sm-6 col-md-3 col-lg-2 res-item" *ngFor="let res of materialsList" [info]="res" [behavior]="behavior"></res-item>
+        <res-item  class="col-xs-12 col-sm-6 col-md-3 col-lg-2 res-item" *ngFor="let res of materialsList" [info]="res"></res-item>
       </div>
     </div>
   </div>

@@ -33,12 +33,12 @@
         <div class="col-xs-12 recipe-label" *ngIf="selectedMaterialRecipe.length">Рецепт:</div>
         <div class="recipe-item" *ngFor="let res of selectedMaterialRecipe; let i = index;">
           <div class="col-xs-7 recipe-item-name">{{res.name}}</div>
-          <div class="col-xs-2 pd text-right" [ngClass]="{'text-danger': neededResourcesForCraft(i) > itemsInStorage(res.id)}">{{neededResourcesForCraft(i)}}</div>
-          <div class="col-xs-3 pd text-left">/{{itemsInStorage(res.id)}}</div>
+          <div class="col-xs-2 np text-right" [ngClass]="{'text-danger': neededResourcesForCraft(i) > itemsInStorage(res.id)}">{{neededResourcesForCraft(i)}}</div>
+          <div class="col-xs-3 np text-left">/{{itemsInStorage(res.id)}}</div>
         </div>
 
         <div class="actions" *ngIf="selectedMaterialRecipe.length">
-          <div class="col-xs-7 pd text-center">
+          <div class="col-xs-7 np text-center">
             <ticker [minValue]=1 (change)="toCraftChange($event)" [value]="toCraft"></ticker>
           </div>
           <div class="col-xs-5 text-center">

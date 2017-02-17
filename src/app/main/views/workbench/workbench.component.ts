@@ -25,6 +25,21 @@ export class WorkbenchComponent implements OnInit{
     private store: Store<any>
   ) { }
 
+  public ngOnInit() {
+    this.store.select('GroupsReducer')
+      .subscribe(list => this.groupsList = list);
+
+    this.store.select('ResourcesReducer')
+      .subscribe((list: Array<Resource>) => {
+        this.materialsList = list;
+        if(this.filteredMaterialsList[0])
+          this.selectedItem = this.filteredMaterialsList[0].id;
+      });
+      
+    this.store.select('InventoryReducer')
+      .subscribe(list => this.inventory = list);
+  }
+
   private selectGroup(groupId) {
     if(this.selectedGroup !== groupId) {
       this.selectedGroup = groupId;
@@ -105,21 +120,6 @@ export class WorkbenchComponent implements OnInit{
         result = false;
     });
     return result;
-  }
-
-  public ngOnInit() {
-    this.store.select('GroupsReducer')
-      .subscribe(list => this.groupsList = list);
-
-    this.store.select('ResourcesReducer')
-      .subscribe((list: Array<Resource>) => {
-        this.materialsList = list;
-        if(this.filteredMaterialsList[0])
-          this.selectedItem = this.filteredMaterialsList[0].id;
-      });
-      
-    this.store.select('InventoryReducer')
-      .subscribe(list => this.inventory = list);
   }
 
 }
