@@ -12,6 +12,7 @@
   float: left;
   width: 250px;
   padding: 5px;
+  font-size: 13px;
 }
 
 .materials-section {
@@ -114,6 +115,7 @@
 
 .to-sell {
   margin: 20px 0;
+  font-size: 13px;
 }
 
 .actions {
