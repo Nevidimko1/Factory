@@ -88,9 +88,10 @@
   padding-top: 1px;
 }
 
-.res-info {
-  display: inline-flex;
-  width: 100%;
+.icon {
+  margin: 3px;
+  background-color: #fff;
+  display: inline-block;
 }
 
 .res-name {
@@ -99,18 +100,17 @@
   width: calc(100% - 48px);
 }
 
-.icon {
-  margin: 3px;
-  background-color: #fff;
-  display: inline-block;
-}
-
 .bordered {
   height: 26px;
   line-height: 26px;
   font-size: 14px;
   border-top: 1px solid #6C6D70;
   border-bottom: 1px solid #6C6D70;
+}
+
+.res-info {
+  display: inline-flex;
+  width: 100%;
 }
 
 .to-sell {

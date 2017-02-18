@@ -1,8 +1,10 @@
 <div class="row content">
-  <div class="col-xs-4 col-sm-3 col-md-2 section">
+  <div class="groups-section">
     <div class="panel">
-      <div class="panel-heading text-center">Группы</div>
-      <div class="panel-body groups">
+      <div class="panel-heading text-center">
+        Группы
+      </div>
+      <div class="panel-body">
         <div class="list-group">
           <div class="list-group-item" [ngClass]="{'active': selectedGroup === group.id}" *ngFor="let group of groupsList" (click)="selectGroup(group.id)">{{group.name}}</div>
         </div>
@@ -13,31 +15,34 @@
     <div class="panel">
       <div class="panel-heading text-center">Материалы</div>
       <div class="panel-body" (click)="selectMaterial($event)">
-        <wb-res-item class="col-md-4 col-lg-3 res-item" *ngFor="let res of filteredMaterialsList" [info]="res" [selected]="selectedItem === res.id" id="wb-res-item-{{res.id}}"></wb-res-item>
+        <res-item  *ngFor="let res of filteredMaterialsList" [selected]="selectedItem === res.id"  [info]="res" id="res-item-{{res.id}}"></res-item>
       </div>
     </div>
   </div>
-  <div class="col-xs-4 col-sm-3 col-md-2 section">
+  <div class="craft-section">
     <div class="panel">
       <div class="panel-heading text-center">Крафт</div>
       <div class="panel-body craft">
-        <div class="head">
-          <div class="icon res res-{{selectedMaterialIcon}}"></div>
-          <div class="name">{{selectedMaterialName}}</div>
+        <div class="res-info">
+          <div class="pic">
+            <div class="icon res res-{{selectedMaterialIcon}}"></div>
+          </div>
+          <div class="res-name text-center">{{selectedMaterialName}}</div>
         </div>
-        <div class="col-xs-12 in-storage">
-          <span>{{price(selectedItem)}}€</span>
+
+        <div class="col-xs-12 pd5 bordered">
+          <span>{{price}}€</span>
           <span class="pull-right">{{itemsInStorage(selectedItem)}}<small> шт.</small></span>
         </div>
 
-        <div class="col-xs-12 recipe-label" *ngIf="selectedMaterialRecipe.length">Рецепт:</div>
+        <div class="col-xs-12 pd5 recipe-label text-center" *ngIf="selectedMaterialRecipe.length">Рецепт</div>
         <div class="recipe-item" *ngFor="let res of selectedMaterialRecipe; let i = index;">
           <div class="col-xs-7 recipe-item-name">{{res.name}}</div>
           <div class="col-xs-2 np text-right" [ngClass]="{'text-danger': neededResourcesForCraft(i) > itemsInStorage(res.id)}">{{neededResourcesForCraft(i)}}</div>
           <div class="col-xs-3 np text-left">/{{itemsInStorage(res.id)}}</div>
         </div>
 
-        <div class="actions" *ngIf="selectedMaterialRecipe.length">
+        <div class="col-xs-12 pd5 bordered actions" *ngIf="selectedMaterialRecipe.length">
           <div class="col-xs-7 np text-center">
             <ticker [minValue]=1 (change)="toCraftChange($event)" [value]="toCraft"></ticker>
           </div>

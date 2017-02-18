@@ -1,9 +1,10 @@
 .content {
   height: 100%;
   margin: 0;
+  font-weight: bold;
 }
 
-.section, .materials-section, .panel {
+.groups-section, .materials-section, .craft-section, .panel {
   height: 100%;
 }
 
@@ -11,12 +12,23 @@
   margin: 0;
 }
 
-.section {
+.groups-section {
+  float: left;
+  width: 250px;
   padding: 5px;
+  font-size: 13px;
 }
 
 .materials-section {
-  padding: 5px 0 5px 0;
+  display: inline-block;
+  width: calc(100% - 500px);
+  padding: 5px 0;
+}
+
+.craft-section {
+  float: right;
+  width: 250px;
+  padding: 5px;
 }
 
 .materials-section .panel .panel-body {
@@ -35,7 +47,6 @@
   height: 25px;
   line-height: 25px;  
   color: #ededed;
-  font-weight: bold;
   background-color: #6C6D70;
   border-radius: 0;
 }
@@ -73,36 +84,33 @@
 
 .groups {
   font-size: 13px;
-  font-weight: bold;
 }
 
 /* craft */
-.craft {
-  font-weight: bold;
+.pic {
+  display: inline-block;
+  margin: 3px;
+  width: 42px;
+  height: 42px;
+  background: #fff;
+  text-align: center;
+  border: 1px solid #6C6D70;
+  padding-top: 1px;
 }
 
-.craft .col-xs-12 {
-  padding: 0 5px;
-}
-
-.head {
-  height: 50px;
-  display: flex;
-}
-
-.head .icon {
-  margin: 8px 5px;
+.icon {
+  margin: 3px;
   background-color: #fff;
   display: inline-block;
 }
 
-.head .name {
+.res-name {
   display: inline-block;
-  margin: 0 auto;
-  padding: 5px 3px;
+  word-wrap: break-word;
+  width: calc(100% - 48px);
 }
 
-.in-storage {
+.bordered {
   height: 26px;
   line-height: 26px;
   font-size: 14px;
@@ -110,19 +118,25 @@
   border-bottom: 1px solid #6C6D70;
 }
 
-.recipe-label {
-  font-size: 15px;
-  font-weight: bold;
-  margin: 5px 0 10px 0;
+.res-info {
+  display: inline-flex;
+  width: 100%;
 }
 
-.craft .actions {
-  margin-top: 10px;
-  height: 26px;
-  line-height: 22px;
+.to-sell {
+  margin: 20px 0;
+  font-size: 13px;
+}
+
+.actions {
+  margin-top: 5px;
+  padding-top: 1px;
+  line-height: 20px;
+}
+
+.recipe-label {
   font-size: 14px;
-  border-top: 1px solid #6C6D70;
-  border-bottom: 1px solid #6C6D70;
+  margin: 5px 0 10px 0;
 }
 
 .recipe-item {

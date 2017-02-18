@@ -18,7 +18,7 @@ export class WorkbenchComponent implements OnInit{
   private materialsList;
   private inventory;
   private toCraft: number = 1;
-  private selectedGroup: number = -1;
+  private selectedGroup: number = 0;
   private selectedItem: number = -1;
 
   constructor(
@@ -55,8 +55,8 @@ export class WorkbenchComponent implements OnInit{
   private selectMaterial($event) {
     let id = -1;
     $event.path.forEach(o => {
-      if(o.localName === 'wb-res-item')
-        id = o.id.replace('wb-res-item-', '');
+      if(o.localName === 'res-item')
+        id = o.id.replace('res-item-', '');
     });
     if(id >= 0) {
       this.selectedItem = Number(id);
@@ -84,8 +84,8 @@ export class WorkbenchComponent implements OnInit{
     return this.inventory[id] || 0;
   }
 
-  private price(id) {
-    return Utils.toCurrency(this.materialsList && this.materialsList[id] && this.materialsList[id].price || 0);
+  private get price() {
+    return Utils.toCurrency(this.materialsList && this.materialsList[this.selectedItem] && this.materialsList[this.selectedItem].price || 0);
   }
 
   private get filteredMaterialsList() {
