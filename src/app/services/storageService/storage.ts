@@ -9,6 +9,7 @@ const STORAGE = 'playerData';
 
 export class Storage {
   private _storage: Object;
+  private _numberOfMaterials: number = 0;
 
   constructor(
     private http: Http,
@@ -18,6 +19,7 @@ export class Storage {
     this.http.get('assets/materials.json')
       .subscribe(res => {
         StorageUtils.calculateUnsetPrices(res.json(), (materials) => {
+          this._numberOfMaterials = materials.length;
           this.store.dispatch({type: Actions.RESOURCES.SET_RESOURCES, payload: materials});
         });
       });
@@ -45,15 +47,28 @@ export class Storage {
   }
 
   public newGame(username): void {
-    let newData = {
-      name: username,
-      money: 100
-    };
+    let newData;
+    if(username === 'Test') {
+      newData = {
+        money: 100000000,
+        name: username,
+        inventory: _.fill(Array(this._numberOfMaterials), 10000)
+      };
+    } else {
+      newData = {
+        name: username,
+        money: 100
+      };
+    }
 
     localStorage.setItem(STORAGE, this.getSettable(newData));
 
     this.store.dispatch({type: Actions.NAME.SET_NAME, payload: newData.name});
     this.store.dispatch({type: Actions.MONEY.ADD_MONEY, payload: newData.money});
+
+    //only for tests
+    if(newData.inventory)
+      this.store.dispatch({type: Actions.INVENTORY.SET_ITEMS, payload: newData.inventory});
     
     this.addListeners();
   }
