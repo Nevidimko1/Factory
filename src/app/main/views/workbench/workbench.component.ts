@@ -15,7 +15,7 @@ import { Utils } from '../../../utils';
 })
 export class WorkbenchComponent implements OnInit{
   private groupsList;
-  private materialsList;
+  private materialsList: Array<Resource>;
   private inventory;
   private toCraft: number = 1;
   private selectedGroup: number = 0;
@@ -49,7 +49,8 @@ export class WorkbenchComponent implements OnInit{
       this.selectedGroup = -1;
     }
     this.toCraft = 1;
-    this.selectedItem = this.filteredMaterialsList[0].id;
+
+    this.selectedItem = this.filteredMaterialsList.length ? this.filteredMaterialsList[0].id : -1;
   }
 
   private selectMaterial($event) {
@@ -85,17 +86,17 @@ export class WorkbenchComponent implements OnInit{
   }
 
   private get price() {
-    return Utils.toCurrency(this.materialsList && this.materialsList[this.selectedItem] && this.materialsList[this.selectedItem].price || 0);
+    return Utils.toCurrency(this.selectedMaterial && this.selectedMaterial.price || 0);
   }
-
+  
   private get filteredMaterialsList() {
     return _.filter(this.materialsList, (item: Resource) => {
-      return this.selectedGroup < 0 && item.level !== 1 || (item.group === this.selectedGroup && item.group >= 0);
+      return item.recipe && item.recipe.length && ((this.selectedGroup < 0 && item.level !== 1) || (item.group === this.selectedGroup && item.group >= 0));
     });
   }
 
-  private get selectedMaterial() {
-    return this.materialsList && this.materialsList[this.selectedItem];
+  private get selectedMaterial(): Resource {
+    return _.find(this.materialsList, {id : this.selectedItem});
   }
 
   private get selectedMaterialName() {
@@ -116,6 +117,9 @@ export class WorkbenchComponent implements OnInit{
   }
 
   private get canCraft() {
+    if(!this.selectedMaterialRecipe || !this.selectedMaterialRecipe.length)
+      return false;
+
     let result = true;
     this.selectedMaterialRecipe.forEach((res, i) => {
       if(this.neededResourcesForCraft(i) > this.itemsInStorage(res.id))

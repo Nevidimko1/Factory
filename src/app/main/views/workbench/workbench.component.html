@@ -23,31 +23,33 @@
     <div class="panel">
       <div class="panel-heading text-center">Крафт</div>
       <div class="panel-body craft">
-        <div class="res-info">
-          <div class="pic">
-            <div class="icon res res-{{selectedMaterialIcon}}"></div>
+        <div *ngIf="selectedItem >= 0">
+          <div class="res-info">
+            <div class="pic">
+              <div class="icon res res-{{selectedMaterialIcon}}"></div>
+            </div>
+            <div class="res-name text-center">{{selectedMaterialName}}</div>
           </div>
-          <div class="res-name text-center">{{selectedMaterialName}}</div>
-        </div>
 
-        <div class="col-xs-12 pd5 bordered">
-          <span>{{price}}€</span>
-          <span class="pull-right">{{itemsInStorage(selectedItem)}}<small> шт.</small></span>
-        </div>
-
-        <div class="col-xs-12 pd5 recipe-label text-center" *ngIf="selectedMaterialRecipe.length">Рецепт</div>
-        <div class="recipe-item" *ngFor="let res of selectedMaterialRecipe; let i = index;">
-          <div class="col-xs-7 recipe-item-name">{{res.name}}</div>
-          <div class="col-xs-2 np text-right" [ngClass]="{'text-danger': neededResourcesForCraft(i) > itemsInStorage(res.id)}">{{neededResourcesForCraft(i)}}</div>
-          <div class="col-xs-3 np text-left">/{{itemsInStorage(res.id)}}</div>
-        </div>
-
-        <div class="col-xs-12 pd5 bordered actions" *ngIf="selectedMaterialRecipe.length">
-          <div class="col-xs-7 np text-center">
-            <ticker [minValue]=1 (change)="toCraftChange($event)" [value]="toCraft"></ticker>
+          <div class="col-xs-12 pd5 bordered">
+            <span>{{price}}€</span>
+            <span class="pull-right">{{itemsInStorage(selectedItem)}}<small> шт.</small></span>
           </div>
-          <div class="col-xs-5 text-center">
-            <button type="button" class="btn btn-primary btn-xs" [disabled]="!canCraft" (click)="craft()">Создать</button>
+
+          <div class="col-xs-12 pd5 recipe-label text-center" *ngIf="selectedMaterialRecipe.length">Рецепт</div>
+          <div class="recipe-item" *ngFor="let res of selectedMaterialRecipe; let i = index;">
+            <div class="col-xs-7 recipe-item-name">{{res.name}}</div>
+            <div class="col-xs-2 np text-right" [ngClass]="{'text-danger': neededResourcesForCraft(i) > itemsInStorage(res.id)}">{{neededResourcesForCraft(i)}}</div>
+            <div class="col-xs-3 np text-left">/{{itemsInStorage(res.id)}}</div>
+          </div>
+
+          <div class="col-xs-12 pd5 bordered actions" *ngIf="selectedMaterialRecipe.length">
+            <div class="col-xs-7 np text-center">
+              <ticker [minValue]=1 (change)="toCraftChange($event)" [value]="toCraft"></ticker>
+            </div>
+            <div class="col-xs-5 text-center">
+              <button type="button" class="btn btn-primary btn-xs" [disabled]="!canCraft" (click)="craft()">Создать</button>
+            </div>
           </div>
         </div>
       </div>

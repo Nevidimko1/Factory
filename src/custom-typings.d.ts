@@ -137,6 +137,7 @@ interface Resource {
   group,
   level;
   price;
+  recipe;
   id;
 }
 
