@@ -3,6 +3,7 @@ import { MONEY, MoneyReducer } from './storageService/reducers/money.reducer';
 import { RESOURCES, ResourcesReducer } from './storageService/reducers/resources.reducer';
 import { GROUPS, GroupsReducer } from './storageService/reducers/groups.reducer';
 import { INVENTORY, InventoryReducer } from './storageService/reducers/inventory.reducer';
+import { TOOLS, ToolsReducer } from './storageService/reducers/tools.reducer';
 
 export * from './storageService/storage.service';
 export * from './storageService/storage';
@@ -12,7 +13,8 @@ export const Actions = {
     MONEY,
     RESOURCES,
     GROUPS,
-    INVENTORY
+    INVENTORY,
+    TOOLS
 }
 
 export const Reducers = {
@@ -20,5 +22,6 @@ export const Reducers = {
     MoneyReducer,
     ResourcesReducer,
     GroupsReducer,
-    InventoryReducer
+    InventoryReducer,
+    ToolsReducer
 }

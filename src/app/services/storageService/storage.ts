@@ -42,6 +42,7 @@ export class Storage {
     this.store.dispatch({type: Actions.NAME.SET_NAME, payload: data.name});
     this.store.dispatch({type: Actions.MONEY.ADD_MONEY, payload: data.money});
     this.store.dispatch({type: Actions.INVENTORY.SET_ITEMS, payload: data.inventory});
+    this.store.dispatch({type: Actions.TOOLS.SET_ITEMS, payload: data.factoryTools});
     
     this.addListeners();
   }
@@ -81,6 +82,8 @@ export class Storage {
       .subscribe(money => this.set('money', money));
     this.store.select('InventoryReducer')
       .subscribe(inventory => this.set('inventory', inventory));
+    this.store.select('ToolsReducer')
+      .subscribe(tools => this.set('factoryTools', tools));
   }
 
   private set(key: string, value: any): void {

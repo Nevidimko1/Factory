@@ -1,8 +1,17 @@
 <div class="panel">
   <div class="panel-heading text-center">
     Оборудование
+    <button type="button" class="btn btn-xs btn-success add-tool-button" (click)="addTool()" [disabled]="!canAddTool"
+      [attr.title]="!canAddTool ? 'Необходимо Станок 1шт' : ''">
+      Добавить
+    </button>
   </div>
   <div class="panel-body">
-    
+    <div class="col-xs-12 np list" (click)="selectTool($event)">
+      <factory-tool-item *ngFor="let item of toolsList" [name]="item.name" [selected]="selectedTool === item.id" id="factory-tool-item-{{item.id}}"></factory-tool-item>
+    </div>
+    <div class="col-xs-12 pd5 footer">
+      Запущено: 0, Всего: {{toolsList.length}}
+    </div>
   </div>
 </div>
