@@ -1,6 +1,9 @@
 import {
   Component,
-  OnInit
+  OnInit,
+  Input,
+  Output,
+  EventEmitter
 } from '@angular/core';
 import * as _ from 'lodash';
 import { Store } from '@ngrx/store';
@@ -12,8 +15,10 @@ import { Actions } from '../../../../../services';
   templateUrl: './toolsList.component.html'
 })
 export class ToolsListComponent implements OnInit {
+  @Input() selectedTool: number;
+  @Output() change: EventEmitter<number> = new EventEmitter();
+
   private machineCount: number = 0;
-  private selectedTool: number = 0;
   private toolsList;
 
   constructor(
@@ -29,12 +34,14 @@ export class ToolsListComponent implements OnInit {
   }
 
   private selectTool($event) {
-    let id = 0;
+    let id;
     $event.path.forEach(o => {
       if(o.localName === 'factory-tool-item')
         id = o.id.replace('factory-tool-item-', '');
     });
-    this.selectedTool = Number(id);
+    if(id >= 0) {
+      this.change.emit(Number(id));
+    }
   }
   
   private get canAddTool(): boolean {
