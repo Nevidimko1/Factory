@@ -42,7 +42,7 @@ export class Storage {
     this.store.dispatch({type: Actions.NAME.SET_NAME, payload: data.name});
     this.store.dispatch({type: Actions.MONEY.ADD_MONEY, payload: data.money});
     this.store.dispatch({type: Actions.INVENTORY.SET_ITEMS, payload: data.inventory});
-    this.store.dispatch({type: Actions.TOOLS.SET_ITEMS, payload: data.factoryTools});
+    this.store.dispatch({type: Actions.TOOLS.SET_ITEMS, payload: data.factoryTools || []});
     
     this.addListeners();
   }
