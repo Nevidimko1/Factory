@@ -8,14 +8,18 @@
 }
 
 .section .caption {
+  font-size: 15px;
   border-bottom: 1px solid #6C6D70;
 }
 
 .section .body {
-  margin: 5px 10px;
-  font-size: 13px;
-  line-height: 14px;
-  height: 14px;
+  margin: 10px 10px;
+  font-size: 14px;
+  line-height: 16px;
+}
+
+.section .body .row {
+  margin: 0;
 }
 
 .edit-btn {
@@ -26,7 +30,32 @@
 .new-name-input {
   height: 20px;
   width: 300px;
-  margin: 0;
+  margin: 0 0 5px 0;
   padding: 0 3px;
+  display: inline-block;
+}
+
+.progress {
+  margin: 5px 0;
+  width: calc(100% - 10px);
+}
+
+.progress-bar {
+  min-width: 2em;
+}
+
+.pic {
+  display: inline-block;
+  text-align: center;
+  padding-top: 4px;
+  height: 50px;
+  width: 50px;
+  background-color: #fff;
+  border: 1px solid #6C6D70;
+}
+
+.icon {
+  margin: 3px;
+  background-color: #fff;
   display: inline-block;
 }

@@ -6,25 +6,79 @@
     <div *ngIf="toolsList.length">
       <div class="section">
         <div class="caption">Информация</div>
-        <div class="row body">
-          <div class="col-xs-3 np">Название:</div>
-          <div class="col-xs-9 np">
-            <div *ngIf="!editNameMode">
-              <span>{{name}}</span>
-              <span class="glyphicon glyphicon-edit edit-btn" (click)="enterEditNameMode()" aria-hidden="true"></span>
-            </div>
-            <div *ngIf="editNameMode">
-              <input type="text" class="form-control new-name-input" [(ngModel)]="newName">
-              <span class="glyphicon glyphicon-ok text-success edit-btn" (click)="saveName()" aria-hidden="true"></span>
-              <span class="glyphicon glyphicon-remove text-danger edit-btn" (click)="declineSaveName()" aria-hidden="true"></span>
+        <div class="body">
+          <div class="row">
+            <div class="col-xs-3 np">Название:</div>
+            <div class="col-xs-9 np">
+              <div *ngIf="!editNameMode">
+                <span>{{name}}</span>
+                <span class="glyphicon glyphicon-edit edit-btn" (click)="enterEditNameMode()" aria-hidden="true"></span>
+              </div>
+              <div *ngIf="editNameMode">
+                <input type="text" class="form-control new-name-input" [(ngModel)]="newName" autofocus>
+                <span class="glyphicon glyphicon-ok text-success edit-btn" (click)="saveName()" aria-hidden="true"></span>
+                <span class="glyphicon glyphicon-remove text-danger edit-btn" (click)="declineSaveName()" aria-hidden="true"></span>
+              </div>
             </div>
           </div>
-          <div class="col-xs-3 np ">Уровень:</div>
-          <div class="col-xs-9 np">{{level}}</div>
-          <div class="col-xs-3 np">Скорость:</div>
-          <div class="col-xs-9 np">{{speed}} тик/сек</div>
+          
+          <div class="row">
+            <div class="col-xs-3 np ">Уровень:</div>
+            <div class="col-xs-9 np">{{level}}</div>
+          </div>
+          
+          <div class="row">
+            <div class="col-xs-3 np">Скорость:</div>
+            <div class="col-xs-9 np">{{speed}} тик/сек</div>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-12 np progress">
+              <div class="progress-bar" role="progressbar" [attr.aria-valuenow]="progress" aria-valuemin="0" aria-valuemax="100" [style.width]="progress + '%'">
+                {{progress}}%
+              </div>
+            </div>
+          </div>
         </div>
       </div>
+
+      <div class="section">
+        <div class="caption">Управление</div>
+        <div class="body">          
+          <div class="row">
+            <button type="button" class="btn btn-primary btn-xs">Старт</button>
+            <button type="button" class="btn btn-danger btn-xs">Стоп</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="caption">Выпускаемая продукция</div>
+        <div class="body">          
+          <div class="row">
+            <div class="pic">
+              <div class="icon res res-{{selectedMaterialIcon}}"></div>
+            </div>
+            <select [ngModel]="selectedToolObject.materialId" (change)="changeMaterial($event.target.value)">
+              <option *ngFor="let item of craftableMaterialsList" [value]="item.id">{{item.name}}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="caption">Сырьё</div>
+        <div class="body">          
+          <div class="row">
+            <div class="recipe-item" *ngFor="let res of selectedMaterialRecipe; let i = index;">
+              <div class="col-xs-7 recipe-item-name">{{res.name}}</div>
+              <div class="col-xs-2 np text-right" [ngClass]="{'text-danger': neededResourcesForCraft(i) > itemsInStorage(res.id)}">{{neededResourcesForCraft(i)}}</div>
+              <div class="col-xs-3 np text-left">/{{itemsInStorage(res.id)}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>

@@ -23,23 +23,6 @@ export class AcceptReject {
   
   constructor( ) { }
 
-  /*private accept() {
-    if(this.behavior === 'buy') {
-      this.store.dispatch({type: Actions.MONEY.SUBSTRACT_MONEY, payload: Number(this.money)});
-      this.list.forEach(function(n, i) {
-        this.store.dispatch({type: Actions.INVENTORY.ADD_ITEMS, payload: {id: i, number: n}});
-      }.bind(this))
-      this.store.dispatch({type: Actions.TO_BUY.CLEAR_TO_BUY});
-    } else {
-      this.store.dispatch({type: Actions.MONEY.ADD_MONEY, payload: Number(this.money)});
-      this.list.forEach(function(n, i) {
-        this.store.dispatch({type: Actions.INVENTORY.SUBSTRACT_ITEMS, payload: {id: i, number: n}});
-      }.bind(this))
-      this.store.dispatch({type: Actions.TO_SELL.CLEAR_TO_SELL});
-    }
-  }*/
-
-
   private get moreThanZero() {
     return this.money;
   }

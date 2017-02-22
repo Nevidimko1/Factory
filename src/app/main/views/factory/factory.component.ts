@@ -15,8 +15,8 @@ import {
     }
   `],
   template: `
-    <factory-tools class="col-xs-4" [selectedTool]="selectedTool" (change)="toolSelectionChanged($event)"></factory-tools>
-    <factory-settings class="col-xs-8" [selectedTool]="selectedTool"></factory-settings>
+    <factory-tools class="col-xs-8" [selectedTool]="selectedTool" (change)="toolSelectionChanged($event)"></factory-tools>
+    <factory-settings class="col-xs-4" [selectedTool]="selectedTool"></factory-settings>
   `
 })
 export class FactoryComponent{

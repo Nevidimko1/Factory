@@ -1,7 +1,8 @@
 export const TOOLS = {
     'ADD_ITEM': 'ToolsReducer.ADD_ITEM',
     'SET_ITEMS': 'ToolsReducer.SET_ITEMS',
-    'RENAME_ITEM': 'ToolsReducer.RENAME_ITEM'
+    'RENAME_ITEM': 'ToolsReducer.RENAME_ITEM',
+    'CHANGE_MATERIAL': 'ToolsReducer.CHANGE_MATERIAL'
 } ;
 
 export const ToolsReducer = (state = [], action) => {
@@ -25,6 +26,15 @@ export const ToolsReducer = (state = [], action) => {
             item = newState[action.payload.id];
             if(item) {
                 item.name = action.payload.name;
+                return newState
+            } else {
+                return state;
+            }
+        case TOOLS.CHANGE_MATERIAL:
+            newState = [...state];    
+            item = newState[action.payload.id];
+            if(item) {
+                item.materialId = Number(action.payload.materialId);
                 return newState
             } else {
                 return state;

@@ -18,6 +18,7 @@ export class ToolsListComponent implements OnInit {
   @Input() selectedTool: number;
   @Output() change: EventEmitter<number> = new EventEmitter();
 
+  private materialsList: Array<Resource>;
   private machineCount: number = 0;
   private toolsList;
 
@@ -31,6 +32,11 @@ export class ToolsListComponent implements OnInit {
     
     this.store.select('ToolsReducer')
       .subscribe(list => this.toolsList = list);
+
+    this.store.select('ResourcesReducer')
+      .subscribe((list: Array<Resource>) => {
+        this.materialsList = list;
+      });
   }
 
   private selectTool($event) {
@@ -46,6 +52,10 @@ export class ToolsListComponent implements OnInit {
   
   private get canAddTool(): boolean {
     return this.machineCount >= 1;
+  }
+
+  private icon(toolId) {
+    return this.toolsList && this.toolsList[toolId] && this.toolsList[toolId].materialId && this.materialsList ? this.materialsList[this.toolsList[toolId].materialId].icon : 'machine';
   }
 
   private addTool():void {

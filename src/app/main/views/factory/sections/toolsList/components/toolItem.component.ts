@@ -67,7 +67,7 @@ import {
     <div class="wrapper" [ngClass]="{'selected': selected}">
       <div class="content">
         <div class="pic">
-          <div class="icon res res-machine"></div>
+          <div class="icon res res-{{icon}}"></div>
         </div>
         <div class="row body">
           <div class="col-xs-12 pd5 text-center name">{{name}}</div>
@@ -86,6 +86,7 @@ export class ToolItemComponent{
   @Input() public selected: boolean = false;
   @Input() public name: string;
   @Input() public progress: number = 0;
+  @Input() public icon: string = 'machine';
 
   constructor() { }
 }
