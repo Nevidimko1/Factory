@@ -14,12 +14,14 @@ import { Utils } from '../../../../../utils';
   styleUrls: ['./settings.component.css'],
   templateUrl: 'settings.component.html'
 })
-export class SettingsComponent{
+
+export class SettingsComponent implements OnInit{
   @Input() selectedTool: number;
-  private toolsList: Array<any> = [];
+
+  private toolsList: Array<ToolItem> = [];
   private materialsList: Array<Resource>;
   private craftableMaterialsList: Array<Resource>;
-  private inventory;
+  private inventory: Array<number>;
   private editNameMode: boolean = false;
   private newName: string;
 
@@ -50,9 +52,25 @@ export class SettingsComponent{
       this.editNameMode = false;
   }
 
-  private changeMaterial(newValue: number) {
-    //TODO: return used items to storage
-    this.store.dispatch({type: Actions.TOOLS.CHANGE_MATERIAL, payload: {id: this.selectedTool, materialId: newValue}});
+  private changeMaterial(newValue) {
+    let materialId = Number(newValue);
+    
+    //return used items to storage
+    this.selectedToolObject.usedItems.forEach((item) => {
+      this.store.dispatch({type: Actions.INVENTORY.ADD_ITEMS, payload: {id: item[0], number: item[1]}});
+    });
+
+    //change material
+    this.store.dispatch({type: Actions.TOOLS.CHANGE_MATERIAL, payload: {id: this.selectedTool, materialId: materialId, usedItems: this.createRecipe(materialId)}});
+  }
+
+  private saveName() {
+    this.store.dispatch({type: Actions.TOOLS.RENAME_ITEM, payload: {id: this.selectedTool, name: this.newName}});
+    this.editNameMode = false;
+  }
+
+  private action(start: boolean) {
+    this.store.dispatch({type: Actions.TOOLS.CHANGE_STATE, payload: {id: this.selectedTool, state: start}});
   }
 
   private get selectedToolObject() {
@@ -64,17 +82,8 @@ export class SettingsComponent{
     this.editNameMode = true;
   }
 
-  private saveName() {
-    this.store.dispatch({type: Actions.TOOLS.RENAME_ITEM, payload: {id: this.selectedTool, name: this.newName}});
-    this.editNameMode = false;
-  }
-
   private declineSaveName() {
     this.editNameMode = false;
-  }
-
-  private neededResourcesForCraft(i) {
-    return this.materialToCraft && this.materialToCraft.recipe[i][1];
   }
 
   private itemsInStorage(id) {
@@ -85,8 +94,8 @@ export class SettingsComponent{
     return this.materialsList && this.selectedToolObject && this.selectedToolObject.materialId ? this.materialsList[this.selectedToolObject.materialId] : null;
   }
 
-  private get selectedMaterialRecipe() {
-    let material = this.materialToCraft;
+  private createRecipe(materialId) {
+    let material = _.find(this.materialsList, {id: materialId});
 
     if(!material)
       return [];
@@ -94,7 +103,7 @@ export class SettingsComponent{
     let recipe = material && material.recipe,
       result = [];
     _.forEach(recipe, (r: Array<number>) => {
-      result.push(this.materialsList[r[0]]);
+      result.push([r[0], 0, r[1]]);
     });
     return result;
   }
@@ -114,9 +123,30 @@ export class SettingsComponent{
   private get speed() {
     return this.selectedToolObject ? this.selectedToolObject.speed : '';
   }
+
+  private get started(): boolean {
+    return this.selectedToolObject ? this.selectedToolObject.started : false;
+  }
   
   private get progress() {
     return this.selectedToolObject && this.selectedToolObject.progress >= 0 ? this.selectedToolObject.progress : 0;
+  }
+
+  //recipe
+  private get usedItems() {
+    return this.selectedToolObject ? this.selectedToolObject.usedItems : [];
+  }
+
+  private materialName(id) {
+    return _.get(this.materialsList, '['+id+'].name');
+  }
+
+  private currentRecipeItems(i) {
+    return this.usedItems && this.usedItems[i] ? this.usedItems[i][1] : 0;
+  }
+
+  private neededRecipeItems(i) {
+    return this.usedItems && this.usedItems[i] ? this.usedItems[i][2] : 0;
   }
 
 }

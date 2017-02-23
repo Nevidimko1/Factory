@@ -145,3 +145,15 @@ interface Group {
   name;
   id;
 }
+
+interface ToolItem {
+  id: number;
+  name: string;
+  materialId: number;
+  started: boolean;
+  level: number;
+  speed: number;
+  progress: number;
+  nextTickAt: number;
+  usedItems: Array<Array<any>>;
+}

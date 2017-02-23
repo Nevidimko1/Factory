@@ -24,7 +24,7 @@ import { ROUTES } from './app.routes';
 // App is our top level component
 import { AppComponent } from './app.component';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
-import { StorageService, Reducers, Actions } from './services';
+import { StorageService, FactoryProgressService, Reducers, Actions } from './services';
 import { MenuComponents } from './menu';
 import { MainComponents } from './main';
 import { UtilsList } from './utils';
@@ -61,6 +61,7 @@ const APP_PROVIDERS = [
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     StorageService,
+    FactoryProgressService,
     UtilsList,
     ENV_PROVIDERS,
     APP_PROVIDERS

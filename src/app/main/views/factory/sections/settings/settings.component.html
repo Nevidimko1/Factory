@@ -46,8 +46,8 @@
         <div class="caption">Управление</div>
         <div class="body">          
           <div class="row">
-            <button type="button" class="btn btn-primary btn-xs">Старт</button>
-            <button type="button" class="btn btn-danger btn-xs">Стоп</button>
+            <button type="button" [disabled]="started" (click)="action(true)" class="btn btn-primary btn-xs">Старт</button>
+            <button type="button" [disabled]="!started" (click)="action(false)" class="btn btn-danger btn-xs">Стоп</button>
           </div>
         </div>
       </div>
@@ -70,10 +70,10 @@
         <div class="caption">Сырьё</div>
         <div class="body">          
           <div class="row">
-            <div class="recipe-item" *ngFor="let res of selectedMaterialRecipe; let i = index;">
-              <div class="col-xs-7 recipe-item-name">{{res.name}}</div>
-              <div class="col-xs-2 np text-right" [ngClass]="{'text-danger': neededResourcesForCraft(i) > itemsInStorage(res.id)}">{{neededResourcesForCraft(i)}}</div>
-              <div class="col-xs-3 np text-left">/{{itemsInStorage(res.id)}}</div>
+            <div class="recipe-item" *ngFor="let res of usedItems; let i = index;">
+              <div class="col-xs-7 np">{{materialName(res[0])}}</div>
+              <div class="col-xs-2 np text-right" [ngClass]="{'text-success': currentRecipeItems(i) > neededRecipeItems(i)}">{{currentRecipeItems(i)}}</div>
+              <div class="col-xs-3 np text-left">/{{neededRecipeItems(i)}}</div>
             </div>
           </div>
         </div>

@@ -4,7 +4,7 @@ import {
 } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Router } from '@angular/router';
-import { StorageService } from '../services';
+import { StorageService, FactoryProgressService } from '../services';
 import { Utils } from '../utils';
 
 @Component({
@@ -20,12 +20,15 @@ export class Main implements OnInit {
   private money: string;
 
   constructor(
-    public router: Router,
+    private router: Router,
     private store: Store<any>,
-    public storageService: StorageService
+    private storageService: StorageService,
+    private factoryProgress: FactoryProgressService
   ) {
     if(!this.storageService.initialized) {
       router.navigate(['menu']);
+    } else {
+      factoryProgress.start();
     }
   }
 

@@ -20,7 +20,7 @@ export class ToolsListComponent implements OnInit {
 
   private materialsList: Array<Resource>;
   private machineCount: number = 0;
-  private toolsList;
+  private toolsList: Array<ToolItem>;
 
   constructor(
     private store: Store<any>
@@ -31,7 +31,7 @@ export class ToolsListComponent implements OnInit {
       .subscribe(list => this.machineCount = list[265]);
     
     this.store.select('ToolsReducer')
-      .subscribe(list => this.toolsList = list);
+      .subscribe((list: Array<ToolItem>) => this.toolsList = list);
 
     this.store.select('ResourcesReducer')
       .subscribe((list: Array<Resource>) => {
@@ -52,6 +52,19 @@ export class ToolsListComponent implements OnInit {
   
   private get canAddTool(): boolean {
     return this.machineCount >= 1;
+  }
+
+  private get inProgress(): number {
+    let n = 0;
+    
+    if(this.toolsList) {
+      this.toolsList.forEach(tool => {
+        if(tool.started)
+          n++;
+      })
+    }
+
+    return n;
   }
 
   private icon(toolId) {

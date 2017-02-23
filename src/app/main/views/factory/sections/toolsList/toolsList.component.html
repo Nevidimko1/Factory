@@ -8,10 +8,10 @@
   </div>
   <div class="panel-body">
     <div class="col-xs-12 np list" (click)="selectTool($event)">
-      <factory-tool-item *ngFor="let item of toolsList" [name]="item.name" [selected]="selectedTool === item.id" [icon]="icon(item.id)" id="factory-tool-item-{{item.id}}"></factory-tool-item>
+      <factory-tool-item *ngFor="let item of toolsList" [name]="item.name" [progress]="item.progress" [selected]="selectedTool === item.id" [icon]="icon(item.id)" id="factory-tool-item-{{item.id}}"></factory-tool-item>
     </div>
     <div class="col-xs-12 pd5 footer">
-      Запущено: 0, Всего: {{toolsList.length}}
+      Запущено: {{inProgress}}, Всего: {{toolsList.length}}
     </div>
   </div>
 </div>

@@ -7,6 +7,7 @@ import { TOOLS, ToolsReducer } from './storageService/reducers/tools.reducer';
 
 export * from './storageService/storage.service';
 export * from './storageService/storage';
+export * from './factoryProgress.service';
 
 export const Actions = {
     NAME,
