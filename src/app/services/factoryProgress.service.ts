@@ -36,7 +36,7 @@ export class FactoryProgressService {
     let now = d.getTime();
 
     this.toolsList.forEach((tool: ToolItem) => {
-      if(!tool.started)
+      if(!tool.started || !tool.usedItems)
         return;
 
       if(!tool.nextTickAt || tool.nextTickAt <= now) {
