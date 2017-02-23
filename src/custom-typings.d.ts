@@ -155,5 +155,6 @@ interface ToolItem {
   speed: number;
   progress: number;
   nextTickAt: number;
+  enoughMaterials: boolean;
   usedItems: Array<Array<any>>;
 }

@@ -53,6 +53,10 @@ export class FactoryProgressService {
         if(this.inventory[item[0]] > 0) {
           this.store.dispatch({type: Actions.INVENTORY.SUBSTRACT_ITEMS, payload: {id: item[0], number: 1}});
           this.store.dispatch({type: Actions.TOOLS.INCREMENT_USED_ITEM, payload: {id: tool.id, i: i}});
+          if(!tool.enoughMaterials)
+            this.store.dispatch({type: Actions.TOOLS.UPDATE_ENOUGH_MATERIALS, payload: {id: tool.id, value: true}});
+        } else {
+          this.store.dispatch({type: Actions.TOOLS.UPDATE_ENOUGH_MATERIALS, payload: {id: tool.id, value: false}});
         }
         break;
       } else if(i === tool.usedItems.length - 1) {

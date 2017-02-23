@@ -127,6 +127,10 @@ export class SettingsComponent implements OnInit{
   private get started(): boolean {
     return this.selectedToolObject ? this.selectedToolObject.started : false;
   }
+
+  private get enoughMaterials(): boolean {
+    return this.selectedToolObject ? this.selectedToolObject.enoughMaterials : true;
+  }
   
   private get progress() {
     return this.selectedToolObject && this.selectedToolObject.progress >= 0 ? this.selectedToolObject.progress : 0;

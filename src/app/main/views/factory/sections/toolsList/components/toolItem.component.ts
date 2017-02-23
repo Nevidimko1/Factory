@@ -70,10 +70,10 @@ import {
           <div class="icon res res-{{icon}}"></div>
         </div>
         <div class="row body">
-          <div class="col-xs-12 pd5 text-center name">{{name}}</div>
+          <div class="col-xs-12 pd5 text-center name">{{tool.name}}</div>
           <div class="col-xs-12 np progress">
-            <div class="progress-bar" role="progressbar" [attr.aria-valuenow]="progress" aria-valuemin="0" aria-valuemax="100" [style.width]="progress + '%'">
-              {{progress}}%
+            <div class="progress-bar" [ngClass]="{'progress-bar-warning': !tool.enoughMaterials}" role="progressbar" [attr.aria-valuenow]="tool.progress" aria-valuemin="0" aria-valuemax="100" [style.width]="tool.progress + '%'">
+              {{tool.progress}}%
             </div>
           </div>
         </div>
@@ -83,6 +83,7 @@ import {
 })
 export class ToolItemComponent{
 
+  @Input() public tool: ToolItem;
   @Input() public selected: boolean = false;
   @Input() public name: string;
   @Input() public progress: number = 0;

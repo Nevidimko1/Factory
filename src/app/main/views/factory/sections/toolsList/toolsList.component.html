@@ -8,7 +8,7 @@
   </div>
   <div class="panel-body">
     <div class="col-xs-12 np list" (click)="selectTool($event)">
-      <factory-tool-item *ngFor="let item of toolsList" [name]="item.name" [progress]="item.progress" [selected]="selectedTool === item.id" [icon]="icon(item.id)" id="factory-tool-item-{{item.id}}"></factory-tool-item>
+      <factory-tool-item *ngFor="let tool of toolsList" [tool]="tool" [selected]="selectedTool === tool.id" [icon]="icon(tool.id)" id="factory-tool-item-{{tool.id}}"></factory-tool-item>
     </div>
     <div class="col-xs-12 pd5 footer">
       Запущено: {{inProgress}}, Всего: {{toolsList.length}}

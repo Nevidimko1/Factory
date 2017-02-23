@@ -5,7 +5,8 @@ export const TOOLS = {
     'CHANGE_MATERIAL': 'ToolsReducer.CHANGE_MATERIAL',
     'CHANGE_STATE': 'ToolsReducer.CHANGE_STATE',
     'INCREMENT_USED_ITEM': 'ToolsReducer.INCREMENT_USED_ITEM',
-    'RESET_USED_ITEMS': 'ToolsReducer.RESET_USED_ITEMS'
+    'RESET_USED_ITEMS': 'ToolsReducer.RESET_USED_ITEMS',
+    'UPDATE_ENOUGH_MATERIALS': 'ToolsReducer.UPDATE_ENOUGH_MATERIALS'
 };
 
 let progress = (usedItems) => {
@@ -35,6 +36,7 @@ export const ToolsReducer = (state = [], action) => {
                 name: 'Новое оборудование №' + n,
                 progress: 0,
                 started: false,
+                enoughMaterials: true,
                 usedItems: []
             }];
         case TOOLS.SET_ITEMS:
@@ -88,6 +90,15 @@ export const ToolsReducer = (state = [], action) => {
                 item.usedItems.forEach((i) => i[1] = 0);
                 item.nextTickAt = d.getTime() + (1000 / item.speed);
                 item.progress = 0;
+                return newState;
+            } else {
+                return state;
+            }
+        case TOOLS.UPDATE_ENOUGH_MATERIALS:
+            newState = [...state];    
+            item = newState[action.payload.id];
+            if(item) {
+                item.enoughMaterials = action.payload.value;
                 return newState;
             } else {
                 return state;
